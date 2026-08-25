@@ -1,0 +1,100 @@
+:root {
+    --background: #fffdf8;
+    --text: #29251f;
+    --muted: #756e63;
+    --accent: #9b4d22;
+    --border: #ddd5ca;
+    --content-width: 760px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    line-height: 1.6;
+}
+
+.site-header {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.site-header a {
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+main {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    margin-top: 2.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.recipe-category {
+    color: var(--muted);
+}
+
+.recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.recipe-meta div {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.recipe-meta dt {
+    font-weight: 700;
+}
+
+.recipe-meta dd {
+    margin: 0;
+}
+
+.recipe-content li {
+    margin-bottom: 0.35rem;
+}
+
+.recipe-list {
+    padding-left: 1.25rem;
+}
+
+.recipe-list a {
+    color: var(--accent);
+}
