@@ -1,7 +1,7 @@
 ---
 recipe: Granola
 category: Desserts
-description: Andrew's granola
+description: Andrew's amazing granola
 yield_count: 2
 yield_type: quart mason jars
 prep_active: 30 minutes
