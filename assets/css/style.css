@@ -309,16 +309,58 @@ a:hover {
         border: 0;
         border-radius: 0;
 
-        padding: 1.5rem 1rem 3rem;
+        padding: 1.25rem 1rem 3rem;
     }
 
     .recipe-header h1 {
         font-size: 2rem;
     }
 
+    .recipe-description {
+        font-size: 1rem;
+    }
+
     .recipe-meta {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
+    }
+
+    .recipe-jump-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+
+        margin-left: -1rem;
+        margin-right: -1rem;
+
+        padding: 0.6rem 1rem;
+
+        background: rgba(255, 255, 255, 0.96);
+
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .recipe-jump-nav a {
+        flex-shrink: 0;
+    }
+
+    .recipe-content {
+        font-size: 1rem;
+    }
+
+    .recipe-content h2 {
+        scroll-margin-top: 4rem;
+    }
+
+    .recipe-content ol {
+        padding-left: 2rem;
+    }
+
+    .recipe-content ol li {
+        margin-bottom: 1rem;
     }
 }
 
