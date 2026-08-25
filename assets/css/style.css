@@ -226,7 +226,6 @@ body {
 .recipe-content ol {
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
-
     padding-left: 1.5rem;
 }
 
@@ -234,6 +233,18 @@ body {
     margin-bottom: 0.55rem;
 }
 
+.recipe-content ul li {
+    margin-bottom: 0.65rem;
+}
+
+.recipe-content ol {
+    padding-left: 2.5rem;
+}
+
+.recipe-content ol li {
+    padding-left: 0.4rem;
+    margin-bottom: 1rem;
+}
 
 /* --------------------------------------------------
    Instructions
@@ -247,6 +258,9 @@ body {
     padding-left: 0.35rem;
 }
 
+.recipe-content ul {
+    padding-left: 1.4rem;
+}
 
 /* --------------------------------------------------
    Source
