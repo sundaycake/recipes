@@ -18,3 +18,19 @@ cook_method:
 source:
 source_url:
 ---
+
+## Equipment
+
+## Ingredients
+
+## Instructions
+
+## Notes
+
+## Tips
+
+## Substitutions
+
+## Adaptation
+
+## Revision History
