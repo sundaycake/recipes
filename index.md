@@ -3,16 +3,59 @@ layout: default
 title: Recipes
 ---
 
-# Recipes
+<div class="recipe-index">
 
-{% assign recipes = site.recipes | sort: "recipe" %}
+    <header class="recipe-index-header">
+        <h1>Recipes</h1>
+    </header>
 
-<ul>
-{% for recipe in recipes %}
-    <li>
-        <a href="{{ recipe.url | relative_url }}">
-            {{ recipe.recipe }}
-        </a>
-    </li>
-{% endfor %}
-</ul>
+    {% assign categories = site.recipes | map: "category" | uniq | sort %}
+
+    {% for category in categories %}
+
+        <section class="recipe-index-category">
+
+            <h2>{{ category }}</h2>
+
+            <div class="recipe-index-list">
+
+                {% assign category_recipes = site.recipes
+                    | where: "category", category
+                    | sort: "recipe" %}
+
+                {% for recipe in category_recipes %}
+
+                    <a
+                        class="recipe-index-item"
+                        href="{{ recipe.url | relative_url }}"
+                    >
+
+                        <div class="recipe-index-name">
+                            {{ recipe.recipe }}
+                        </div>
+
+                        {% if recipe.description %}
+                            <div class="recipe-index-description">
+                                {{ recipe.description }}
+                            </div>
+                        {% endif %}
+
+                        {% if recipe.tags %}
+                            <div class="recipe-index-tags">
+                                {% for tag in recipe.tags %}
+                                    <span>{{ tag }}</span>{% unless forloop.last %} · {% endunless %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                    </a>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+    {% endfor %}
+
+</div>
