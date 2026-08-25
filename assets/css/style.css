@@ -1,100 +1,309 @@
 :root {
-    --background: #fffdf8;
-    --text: #29251f;
-    --muted: #756e63;
-    --accent: #9b4d22;
-    --border: #ddd5ca;
+    --page-background: #f5f3ef;
+    --card-background: #ffffff;
+
+    --text: #292722;
+    --muted: #6d6961;
+    --accent: #7b4f2c;
+
+    --border: #dedbd5;
+
     --content-width: 760px;
 }
+
+
+/* --------------------------------------------------
+   Base
+   -------------------------------------------------- */
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     margin: 0;
-    background: var(--background);
+
+    background: var(--page-background);
     color: var(--text);
+
     font-family:
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
     line-height: 1.6;
 }
 
+
+/* --------------------------------------------------
+   Site header
+   -------------------------------------------------- */
+
 .site-header {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
+    background: var(--card-background);
     border-bottom: 1px solid var(--border);
 }
 
-.site-header a {
+.site-header-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.site-title {
     color: var(--text);
-    font-size: 1.25rem;
+
+    font-size: 1.1rem;
     font-weight: 700;
+
     text-decoration: none;
 }
 
-main {
+
+/* --------------------------------------------------
+   Main content
+   -------------------------------------------------- */
+
+.site-main {
     max-width: var(--content-width);
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
 }
 
-h1,
-h2,
-h3 {
-    line-height: 1.2;
+
+/* --------------------------------------------------
+   Recipe card
+   -------------------------------------------------- */
+
+.recipe-card {
+    background: var(--card-background);
+
+    padding: 2.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
 }
 
-h1 {
-    margin-bottom: 0.5rem;
+
+/* --------------------------------------------------
+   Recipe header
+   -------------------------------------------------- */
+
+.recipe-header {
+    margin-bottom: 2rem;
 }
 
-h2 {
-    margin-top: 2.5rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--border);
+.recipe-header h1 {
+    margin: 0;
+
+    font-size: 2.4rem;
+    line-height: 1.15;
+}
+
+.recipe-description {
+    margin: 0.75rem 0 0;
+
+    color: var(--muted);
+
+    font-size: 1.1rem;
 }
 
 .recipe-category {
+    display: inline-block;
+
+    margin-top: 1rem;
+    padding: 0.2rem 0.6rem;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
     color: var(--muted);
+
+    font-size: 0.85rem;
 }
+
+
+/* --------------------------------------------------
+   Recipe image
+   -------------------------------------------------- */
+
+.recipe-image {
+    margin: 0 0 2rem;
+}
+
+.recipe-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 4px;
+}
+
+
+/* --------------------------------------------------
+   Recipe metadata
+   -------------------------------------------------- */
 
 .recipe-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
-    margin: 1.5rem 0 2rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 1px;
+
+    margin: 0 0 2.5rem;
+
+    border: 1px solid var(--border);
+    background: var(--border);
 }
 
-.recipe-meta div {
-    display: flex;
-    gap: 0.4rem;
-}
-
-.recipe-meta dt {
-    font-weight: 700;
-}
-
-.recipe-meta dd {
+.recipe-meta-item {
     margin: 0;
+    padding: 0.85rem 1rem;
+
+    background: var(--card-background);
+}
+
+.recipe-meta-item dt {
+    margin-bottom: 0.15rem;
+
+    color: var(--muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.recipe-meta-item dd {
+    margin: 0;
+
+    font-size: 0.95rem;
+}
+
+
+/* --------------------------------------------------
+   Recipe content
+   -------------------------------------------------- */
+
+.recipe-content {
+    font-size: 1rem;
+}
+
+.recipe-content h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+
+    padding-bottom: 0.4rem;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 1.45rem;
+    line-height: 1.25;
+}
+
+.recipe-content h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.6rem;
+
+    font-size: 1.1rem;
+}
+
+.recipe-content p {
+    margin: 0 0 1rem;
+}
+
+.recipe-content ul,
+.recipe-content ol {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    padding-left: 1.5rem;
 }
 
 .recipe-content li {
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.55rem;
 }
 
-.recipe-list {
-    padding-left: 1.25rem;
+
+/* --------------------------------------------------
+   Instructions
+   -------------------------------------------------- */
+
+.recipe-content ol {
+    padding-left: 2rem;
 }
 
-.recipe-list a {
+.recipe-content ol li {
+    padding-left: 0.35rem;
+}
+
+
+/* --------------------------------------------------
+   Source
+   -------------------------------------------------- */
+
+.recipe-source {
+    margin-top: 3rem;
+    padding-top: 1rem;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+.recipe-source a {
     color: var(--accent);
+}
+
+
+/* --------------------------------------------------
+   Links
+   -------------------------------------------------- */
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/* --------------------------------------------------
+   Mobile
+   -------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .site-main {
+        padding: 0;
+    }
+
+    .recipe-card {
+        border: 0;
+        border-radius: 0;
+
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .recipe-header h1 {
+        font-size: 2rem;
+    }
+
+    .recipe-meta {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
 }
