@@ -1,4 +1,4 @@
-title: Recipes
+title: Sundaycake Recipes
 description: A collection of recipes
 
 collections:
@@ -11,6 +11,6 @@ defaults:
       path: ""
       type: "recipes"
     values:
-      layout: "recipe"
+      layout: recipe
 
 markdown: kramdown
