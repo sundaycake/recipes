@@ -1,29 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+layout: default
+title: Recipes
+---
 
-    <title>
-        {% if page.title %}
-            {{ page.title }} | {{ site.title }}
-        {% else %}
-            {{ site.title }}
-        {% endif %}
-    </title>
+# Recipes
 
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-</head>
+{% assign recipes = site.recipes | sort: "recipe" %}
 
-<body>
-
-<header class="site-header">
-    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-</header>
-
-<main>
-    {{ content }}
-</main>
-
-</body>
-</html>
+<ul>
+{% for recipe in recipes %}
+    <li>
+        <a href="{{ recipe.url | relative_url }}">
+            {{ recipe.recipe }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
