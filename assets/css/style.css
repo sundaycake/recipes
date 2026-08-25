@@ -307,3 +307,101 @@ a:hover {
             repeat(2, minmax(0, 1fr));
     }
 }
+
+/* --------------------------------------------------
+   Recipe index
+   -------------------------------------------------- */
+
+.recipe-index-header {
+    margin-bottom: 2rem;
+}
+
+.recipe-index-header h1 {
+    margin: 0;
+
+    font-size: 2.2rem;
+}
+
+
+/* Category */
+
+.recipe-index-category {
+    margin-bottom: 2.5rem;
+}
+
+.recipe-index-category h2 {
+    margin: 0 0 0.75rem;
+
+    padding-bottom: 0.4rem;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* Recipe list */
+
+.recipe-index-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Individual recipe */
+
+.recipe-index-item {
+    display: block;
+
+    padding: 0.9rem 0.75rem;
+
+    border-bottom: 1px solid #ebe9e5;
+
+    color: var(--text);
+
+    text-decoration: none;
+}
+
+.recipe-index-item:first-child {
+    border-top: 0;
+}
+
+.recipe-index-item:hover {
+    background: #faf9f7;
+}
+
+
+/* Recipe name */
+
+.recipe-index-name {
+    font-size: 1.05rem;
+    font-weight: 650;
+}
+
+
+/* Description */
+
+.recipe-index-description {
+    margin-top: 0.15rem;
+
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+
+/* Tags */
+
+.recipe-index-tags {
+    margin-top: 0.25rem;
+
+    color: var(--muted);
+
+    font-size: 0.75rem;
+}
