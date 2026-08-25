@@ -81,7 +81,7 @@ title: Recipes
         {% endfor %}
 
         <p id="no-results" class="recipe-no-results" hidden>
-            No recipes found.
+            No recipes found :)
         </p>
 
     </div>
