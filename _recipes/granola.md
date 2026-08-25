@@ -1,22 +1,22 @@
 ---
-title: Granola
+recipe: Granola
 category: Desserts
-yield: One or two batches
+description: Andrew's granola
+yield_count: 2
+yield_type: quart mason jars
 prep_active: 30 minutes
 prep_inactive: 3 hours
 cook_time: 100 minutes
 cook_temp: 300°F (150°C)
+cook_type: bake
+source: https://www.seriouseats.com/crispy-homemade-granola-recipe
+adjustments: Reduce sugar, less salt, change baking times
 ---
 
-# Granola
-
-## Summary 
-* Active time: 30 minutes, Inactive time: ~3 hours  
-* Bake at 300°F (150°C) 100 minutes  
+## equipment
+* One 13x18 pan
 
 ## Ingredients
-> Single Batch
-> One 13x18 pan
 
 * 3 1/2 cups (350 g) rolled oats  
 * 3 tsp (12 g) chia seeds  
@@ -27,19 +27,6 @@ cook_temp: 300°F (150°C)
 * 1/2 cup almonds, chopped  
 * 1/2 cup dried cranberries  
 * 1/2 cup dark raisins  
-
-> Double Batch
-> Two 13x18 pans
-
-7 cups (700 g) rolled oats  
-6 tsp (24 g) chia seeds  
-2 cups (480 g) buttermilk (2 Tbsp vinegar and 2 cups milk, see Notes for substitutes)  
-16 Tbsp (230 g) melted butter  
-1 1/2 cups (300 g) sugar  
-1/4 tsp sea salt  
-1 cup almonds, chopped  
-1 cup dried cranberries  
-1 cup dark raisins  
 
 ## Instructions 
 
