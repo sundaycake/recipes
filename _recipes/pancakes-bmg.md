@@ -29,7 +29,7 @@ source_url:
 - 30 g flax seed meal 
 - 170 g all-purpose flour
 
-### Substitution
+### Alternative
 - 2 cups all-purpose flour (250 g)
 
 ## Instructions
