@@ -1,6 +1,7 @@
 ---
 recipe: Granola
 description: Andrew's amazing granola
+image: 
 category: Desserts
 tags:
   - breakfast
