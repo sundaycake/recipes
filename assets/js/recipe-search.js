@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 query === "" ||
                 searchableText.includes(query);
 
-            item.hidden = !matches;
+            item.classList.toggle("is-hidden", !matches);
 
             if (matches) {
                 visibleRecipes++;
@@ -44,14 +44,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const visibleItems =
                 category.querySelectorAll(
-                    ".recipe-index-item:not([hidden])"
+                    ".recipe-index-item:not(.is-hidden)"
                 );
 
-            category.hidden =
-                visibleItems.length === 0;
+            category.classList.toggle(
+                "is-hidden",
+                visibleItems.length === 0
+            );
         });
 
-        noResults.hidden =
-            visibleRecipes !== 0;
+        noResults.classList.toggle(
+            "is-hidden",
+            visibleRecipes !== 0
+        );
     });
+
 });
