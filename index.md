@@ -22,7 +22,7 @@ title: Recipes
     </header>
 
 
-    <div id="recipe-results">
+    <div id="recipe-results"> 
 
         {% assign categories = site.recipes | map: "category" | uniq | sort %}
 
