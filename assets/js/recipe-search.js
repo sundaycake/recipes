@@ -19,8 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         recipeItems.forEach(function (item) {
 
-            const searchableText =
-                item.dataset.search.toLowerCase();
+            const searchableText = [
+                item.dataset.recipe,
+                item.dataset.description,
+                item.dataset.category,
+                item.dataset.tags
+            ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
 
             const matches =
                 query === "" ||
@@ -33,12 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-
-        /*
-         * Hide category headings when every recipe
-         * within that category is hidden.
-         */
-
         categories.forEach(function (category) {
 
             const visibleItems =
@@ -50,10 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 visibleItems.length === 0;
         });
 
-
         noResults.hidden =
             visibleRecipes !== 0;
-
     });
-
 });
