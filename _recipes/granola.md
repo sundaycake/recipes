@@ -1,12 +1,12 @@
 # Granola
 
-## summary 
+## Summary 
 * Active time: 30 minutes, Inactive time: ~3 hours  
 * 12 servings
 
 > Bake at 300°F (150°C) 100 minutes  
 
-## ingredients
+## Ingredients
 > Single Batch
 > One 13x18 pan
 
@@ -33,7 +33,7 @@
 1 cup dried cranberries  
 1 cup dark raisins  
 
-## instructions 
+## Instructions 
 
 1. Make buttermilk (see Notes below), set aside for 20 minutes while assembling ingredients
 2. Combine buttermilk with oats, chia, and melted butter
@@ -47,7 +47,7 @@
 
 Store in airtight jar for up to 6 weeks at room temperature
 
-## notes
+## Notes
 
 Buttermilk substitutes (makes ~1 cup):
 - 1 Tbsp lemon juice or white vinegar + 1 cup (240 g) milk
