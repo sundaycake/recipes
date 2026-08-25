@@ -545,3 +545,118 @@ a:hover {
 .recipe-jump-nav a:hover {
     background: var(--border);
 }
+
+
+/* --------------------------------------------------
+   Print
+   -------------------------------------------------- */
+
+@media print {
+
+    @page {
+        margin: 0.6in;
+    }
+
+    :root {
+        --text: #000000;
+        --muted: #444444;
+        --border: #cccccc;
+    }
+
+    body {
+        background: #ffffff;
+        color: #000000;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: 11pt;
+        line-height: 1.45;
+    }
+
+    .site-header {
+        display: none;
+    }
+
+    .site-main {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .recipe-card {
+        border: 0;
+        border-radius: 0;
+
+        padding: 0;
+
+        background: #ffffff;
+    }
+
+    .recipe-header h1 {
+        font-size: 24pt;
+    }
+
+    .recipe-description {
+        font-size: 11pt;
+    }
+
+    .recipe-image {
+        max-width: 4in;
+    }
+
+    .recipe-jump-nav {
+        display: none;
+    }
+
+    .recipe-meta {
+        break-inside: avoid;
+        page-break-inside: avoid;
+
+        margin-bottom: 1.5rem;
+    }
+
+    .recipe-content h2 {
+        break-after: avoid;
+        page-break-after: avoid;
+
+        break-inside: avoid;
+        page-break-inside: avoid;
+
+        margin-top: 1.5rem;
+    }
+
+    .recipe-content ul,
+    .recipe-content ol {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    .recipe-content li {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .recipe-source {
+        break-inside: avoid;
+        page-break-inside: avoid;
+
+        margin-top: 2rem;
+    }
+
+    a {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    /*
+     * Don't print the URL after normal links.
+     * The recipe source is already displayed as text.
+     */
+
+    .recipe-source a::after {
+        content: none;
+    }
+}
