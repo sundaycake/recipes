@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<article class="recipe">
+
+    <header class="recipe-header">
+
+        <h1>{{ page.recipe }}</h1>
+
+        {% if page.description %}
+            <p class="recipe-description">
+                {{ page.description }}
+            </p>
+        {% endif %}
+
+        {% if page.category %}
+            <p class="recipe-category">
+                {{ page.category }}
+            </p>
+        {% endif %}
+
+    </header>
+
+    <div class="recipe-content">
+        {{ content }}
+    </div>
+
+</article>
