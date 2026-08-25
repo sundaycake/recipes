@@ -460,3 +460,40 @@ a:hover {
 .is-hidden {
     display: none !important;
 }
+
+
+/* --------------------------------------------------
+   Recipe jump navigation
+   -------------------------------------------------- */
+
+.recipe-jump-nav {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+
+    margin: -1rem 0 2.5rem;
+    padding-bottom: 1rem;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.recipe-jump-nav a {
+    display: inline-block;
+
+    padding: 0.4rem 0.7rem;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: #faf9f7;
+
+    color: var(--text);
+
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.recipe-jump-nav a:hover {
+    background: var(--border);
+}
