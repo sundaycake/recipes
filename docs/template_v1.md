@@ -1,29 +1,35 @@
 ---
-recipe:
-description:
-image:
+recipe: 
+description: 
+image: 
 
-category:
-tags:
+category: 
+tags: 
 
-yield:
+yield: 
 
-prep_active:
-prep_inactive:
+prep_active: 
+prep_inactive: 
 
-cook_time:
-cook_temp:
-cook_method:
+cook_time: 
+cook_temp: 
+cook_method: 
 
-source:
-source_url:
+source: 
+source_url: 
 ---
 
 ## Equipment
 
+
+
 ## Ingredients
 
+
+
 ## Instructions
+
+
 
 ## Notes
 
