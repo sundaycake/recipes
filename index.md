@@ -43,11 +43,14 @@ title: Recipes
 
                     {% for recipe in category_recipes %}
 
-                        <a
-                            class="recipe-index-item"
-                            href="{{ recipe.url | relative_url }}"
-                            data-search="{{ recipe.recipe | append: ' ' | append: recipe.description | append: ' ' | append: recipe.category | append: ' ' | append: recipe.tags | join: ' ' | escape }}"
-                        >
+                    <a
+                        class="recipe-index-item"
+                        href="{{ recipe.url | relative_url }}"
+                        data-recipe="{{ recipe.recipe | escape }}"
+                        data-description="{{ recipe.description | escape }}"
+                        data-category="{{ recipe.category | escape }}"
+                        data-tags="{{ recipe.tags | join: ' ' | escape }}"
+                    >
 
                             <div class="recipe-index-name">
                                 {{ recipe.recipe }}
