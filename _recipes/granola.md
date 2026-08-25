@@ -1,10 +1,18 @@
+---
+title: Granola
+category: Desserts
+yield: One or two batches
+prep_active: 30 minutes
+prep_inactive: 3 hours
+cook_time: 100 minutes
+cook_temp: 300°F (150°C)
+---
+
 # Granola
 
 ## Summary 
 * Active time: 30 minutes, Inactive time: ~3 hours  
-* 12 servings
-
-> Bake at 300°F (150°C) 100 minutes  
+* Bake at 300°F (150°C) 100 minutes  
 
 ## Ingredients
 > Single Batch
