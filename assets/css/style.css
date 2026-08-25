@@ -456,3 +456,7 @@ a:hover {
 
     font-style: italic;
 }
+
+.is-hidden {
+    display: none !important;
+}
