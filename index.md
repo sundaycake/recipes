@@ -7,55 +7,80 @@ title: Recipes
 
     <header class="recipe-index-header">
         <h1>Recipes</h1>
+
+        <label class="recipe-search-label" for="recipe-search">
+            Search recipes
+        </label>
+
+        <input
+            id="recipe-search"
+            class="recipe-search"
+            type="search"
+            placeholder="Search recipes..."
+            autocomplete="off"
+        >
     </header>
 
-    {% assign categories = site.recipes | map: "category" | uniq | sort %}
 
-    {% for category in categories %}
+    <div id="recipe-results">
 
-        <section class="recipe-index-category">
+        {% assign categories = site.recipes | map: "category" | uniq | sort %}
 
-            <h2>{{ category }}</h2>
+        {% for category in categories %}
 
-            <div class="recipe-index-list">
+            <section
+                class="recipe-index-category"
+                data-category="{{ category | escape }}"
+            >
 
-                {% assign category_recipes = site.recipes
-                    | where: "category", category
-                    | sort: "recipe" %}
+                <h2>{{ category }}</h2>
 
-                {% for recipe in category_recipes %}
+                <div class="recipe-index-list">
 
-                    <a
-                        class="recipe-index-item"
-                        href="{{ recipe.url | relative_url }}"
-                    >
+                    {% assign category_recipes = site.recipes
+                        | where: "category", category
+                        | sort: "recipe" %}
 
-                        <div class="recipe-index-name">
-                            {{ recipe.recipe }}
-                        </div>
+                    {% for recipe in category_recipes %}
 
-                        {% if recipe.description %}
-                            <div class="recipe-index-description">
-                                {{ recipe.description }}
+                        <a
+                            class="recipe-index-item"
+                            href="{{ recipe.url | relative_url }}"
+                            data-search="{{ recipe.recipe | append: ' ' | append: recipe.description | append: ' ' | append: recipe.category | append: ' ' | append: recipe.tags | join: ' ' | escape }}"
+                        >
+
+                            <div class="recipe-index-name">
+                                {{ recipe.recipe }}
                             </div>
-                        {% endif %}
 
-                        {% if recipe.tags %}
-                            <div class="recipe-index-tags">
-                                {% for tag in recipe.tags %}
-                                    <span>{{ tag }}</span>{% unless forloop.last %} · {% endunless %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+                            {% if recipe.description %}
+                                <div class="recipe-index-description">
+                                    {{ recipe.description }}
+                                </div>
+                            {% endif %}
 
-                    </a>
+                            {% if recipe.tags %}
+                                <div class="recipe-index-tags">
+                                    {% for tag in recipe.tags %}
+                                        <span>{{ tag }}</span>{% unless forloop.last %} · {% endunless %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
 
-                {% endfor %}
+                        </a>
 
-            </div>
+                    {% endfor %}
 
-        </section>
+                </div>
 
-    {% endfor %}
+            </section>
+
+        {% endfor %}
+
+        <p id="no-results" class="recipe-no-results" hidden>
+            No recipes found.
+        </p>
+
+    </div>
 
 </div>
