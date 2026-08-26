@@ -617,7 +617,7 @@ document.addEventListener(
     function () {
 
         const recipe =
-            document.querySelector(".recipe");
+            document.querySelector(".recipe-card");
 
         if (!recipe) {
             return;
