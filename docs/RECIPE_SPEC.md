@@ -108,3 +108,17 @@ Unit conversion changes the displayed unit when the requested conversion is know
 
 Ingredient-specific volume-to-mass conversions are not assumed unless an explicit mass equivalent is supplied by the recipe or a trusted ingredient conversion is available.
 
+## Default Scale
+
+The default_scale schema affects ingredient quantities only.
+
+It should **not** automatically change:
+
+prep time
+inactive/rest time
+cook time
+cooking temperature
+equipment
+instructions
+notes
+yield
