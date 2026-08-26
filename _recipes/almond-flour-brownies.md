@@ -25,7 +25,9 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 ## Equipment
 
 1. Hand blender or stand mixer
-2. See Notes for pan size
+2. Scale:
+- For 1.0x use 8x8 pan
+- For 1.5x use 9x13 pan
 
 ## Ingredients
 
@@ -58,10 +60,6 @@ Optional: 1/3 cup (115 g) chocolate chips, optional
 8. Place brownie pan in fridge and wait until completely cold before dividing into squares
 
 ## Notes
-
-Recipe scaling:
-1. 1x use 8x8 pan
-2. 1.5x use 9x13 pan
 
 ## Tips
 
