@@ -2,7 +2,7 @@
 recipe: Chocolate Chip Cookies
 description: Classic chocolate chip cookies with crisp edges and a soft center.
 
-category: Desserts
+category: Dessert
 tags:
   - cookies
   - chocolate
