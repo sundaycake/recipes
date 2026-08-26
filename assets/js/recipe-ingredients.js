@@ -457,6 +457,33 @@
         return result;
     }
 
+    function findIngredientList() {
+
+    const heading = document.querySelector(
+        ".recipe-content h2#ingredients"
+    );
+
+    if (!heading) {
+        return null;
+    }
+
+    let element = heading.nextElementSibling;
+
+    while (element) {
+
+        if (element.tagName === "UL") {
+            return element;
+        }
+
+        if (element.tagName === "H2") {
+            break;
+        }
+
+        element = element.nextElementSibling;
+    }
+
+    return null;
+}
 
     /*
      * Expose the parser for later stages.
@@ -465,7 +492,8 @@
     window.RecipeIngredients = {
         parse: parseIngredient,
         scale: scaleIngredient,
-        formatNumber
+        formatNumber,
+        findIngredientList
     };
 
 })();
