@@ -608,46 +608,196 @@
 
 })();
 
-
 /* ==================================================
-   TEMPORARY DEVELOPMENT TEST
+   RECIPE SCALING
    ================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        const list =
-            RecipeIngredients.findIngredientList();
+        const recipe =
+            document.querySelector(".recipe");
 
-        if (!list) {
-
-            console.log(
-                "Ingredients list not found."
-            );
-
+        if (!recipe) {
             return;
         }
 
-        console.log(
-            "Ingredients list found:"
-        );
 
-        list.querySelectorAll("li").forEach(
-            function (item) {
+        const ingredientList =
+            RecipeIngredients.findIngredientList();
+
+        if (!ingredientList) {
+            return;
+        }
+
+
+        /*
+         * Preserve the original ingredient text.
+         *
+         * This is important because every scale operation
+         * should always calculate from the original 1× recipe.
+         */
+
+        const ingredients = [];
+
+        ingredientList
+            .querySelectorAll("li")
+            .forEach(function (item) {
+
+                const original =
+                    item.textContent.trim();
 
                 const parsed =
-                    RecipeIngredients.parse(
-                        item.textContent
+                    RecipeIngredients.parse(original);
+
+                ingredients.push({
+                    element: item,
+                    original,
+                    parsed
+                });
+
+            });
+
+
+        /*
+         * Read the recipe's default scale.
+         */
+
+        let currentScale =
+            parseFloat(
+                recipe.dataset.defaultScale
+            );
+
+        if (
+            !Number.isFinite(currentScale) ||
+            currentScale <= 0
+        ) {
+            currentScale = 1;
+        }
+
+
+        /*
+         * Scale the displayed ingredients.
+         */
+
+        function renderIngredients(scale) {
+
+            ingredients.forEach(function (entry) {
+
+                if (!entry.parsed.scalable) {
+
+                    entry.element.textContent =
+                        entry.original;
+
+                    return;
+                }
+
+                entry.element.textContent =
+                    RecipeIngredients.scale(
+                        entry.parsed,
+                        scale
                     );
 
-                console.log(
-                    item.textContent,
-                    parsed
+            });
+
+        }
+
+
+        /*
+         * Update which scale button is selected.
+         */
+
+        function updateButtons(scale) {
+
+            document
+                .querySelectorAll(
+                    ".recipe-scaling [data-scale]"
+                )
+                .forEach(function (button) {
+
+                    const buttonScale =
+                        parseFloat(
+                            button.dataset.scale
+                        );
+
+                    const selected =
+                        buttonScale === scale;
+
+                    button.classList.toggle(
+                        "active",
+                        selected
+                    );
+
+                    button.setAttribute(
+                        "aria-pressed",
+                        selected
+                            ? "true"
+                            : "false"
+                    );
+
+                });
+
+        }
+
+
+        /*
+         * Change the current scale.
+         */
+
+        function setScale(scale) {
+
+            if (
+                !Number.isFinite(scale) ||
+                scale <= 0
+            ) {
+                return;
+            }
+
+            currentScale = scale;
+
+            renderIngredients(
+                currentScale
+            );
+
+            updateButtons(
+                currentScale
+            );
+
+        }
+
+
+        /*
+         * Wire up the scale buttons.
+         */
+
+        document
+            .querySelectorAll(
+                ".recipe-scaling [data-scale]"
+            )
+            .forEach(function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        setScale(
+                            parseFloat(
+                                button.dataset.scale
+                            )
+                        );
+
+                    }
                 );
 
-            }
-        );
+            });
+
+
+        /*
+         * Initial render.
+         */
+
+        setScale(currentScale);
 
     }
 );
