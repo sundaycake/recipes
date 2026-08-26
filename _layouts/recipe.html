@@ -2,112 +2,162 @@
 layout: default
 ---
 
-<article class="recipe-card">
+<article
+  class="recipe-card"
+  data-default-scale="{{ page.default_scale | default: 1 }}"
+>
 
-    <header class="recipe-header">
+  <header class="recipe-header">
 
-        <h1>{{ page.recipe }}</h1>
+    <h1>{{ page.recipe }}</h1>
 
-        {% if page.description %}
-            <p class="recipe-description">
-                {{ page.description }}
-            </p>
-        {% endif %}
-
-        {% if page.category %}
-            <div class="recipe-category">
-                {{ page.category }}
-            </div>
-        {% endif %}
-
-    </header>
-
-
-    {% if page.image %}
-        <figure class="recipe-image">
-            <img
-                src="{{ page.image | relative_url }}"
-                alt="{{ page.recipe }}"
-            >
-        </figure>
+    {% if page.description %}
+    <p class="recipe-description">
+      {{ page.description }}
+    </p>
     {% endif %}
 
+    {% if page.category %}
+    <div class="recipe-category">
+      {{ page.category }}
+    </div>
+    {% endif %}
 
-    <dl class="recipe-meta">
+  </header>
 
-        {% if page.prep_active %}
-            <div class="recipe-meta-item">
-                <dt>Active Prep</dt>
-                <dd>{{ page.prep_active }}</dd>
-            </div>
-        {% endif %}
 
-        {% if page.prep_inactive %}
-            <div class="recipe-meta-item">
-                <dt>Inactive Prep</dt>
-                <dd>{{ page.prep_inactive }}</dd>
-            </div>
-        {% endif %}
+  {% if page.image %}
+  <figure class="recipe-image">
 
-        {% if page.cook_time %}
-            <div class="recipe-meta-item">
-                <dt>Cook Time</dt>
-                <dd>{{ page.cook_time }}</dd>
-            </div>
-        {% endif %}
+    <img
+      src="{{ page.image | relative_url }}"
+      alt="{{ page.recipe }}"
+    >
 
-        {% if page.yield %}
-            <div class="recipe-meta-item">
-                <dt>Yield</dt>
-                <dd>{{ page.yield }}</dd>
-            </div>
-        {% endif %}
+  </figure>
+  {% endif %}
 
-        {% if page.cook_temp %}
-            <div class="recipe-meta-item">
-                <dt>Temperature</dt>
-                <dd>{{ page.cook_temp }}</dd>
-            </div>
-        {% endif %}
 
-        {% if page.cook_method %}
-            <div class="recipe-meta-item">
-                <dt>Method</dt>
-                <dd>{{ page.cook_method }}</dd>
-            </div>
-        {% endif %}
+  <dl class="recipe-meta">
 
-    </dl>
+    {% if page.prep_active %}
+    <div class="recipe-meta-item">
+      <dt>Active Prep</dt>
+      <dd>{{ page.prep_active }}</dd>
+    </div>
+    {% endif %}
 
-    <nav class="recipe-jump-nav" aria-label="Recipe sections">
-    
-        <a href="#ingredients">Ingredients</a>
-        <a href="#instructions">Instructions</a>
-        <a href="#notes">Notes</a>
-    
-    </nav>
-    
-    <div class="recipe-content">
-        {{ content }}
+    {% if page.prep_inactive %}
+    <div class="recipe-meta-item">
+      <dt>Inactive Prep</dt>
+      <dd>{{ page.prep_inactive }}</dd>
+    </div>
+    {% endif %}
+
+    {% if page.cook_time %}
+    <div class="recipe-meta-item">
+      <dt>Cook Time</dt>
+      <dd>{{ page.cook_time }}</dd>
+    </div>
+    {% endif %}
+
+    {% if page.yield %}
+    <div class="recipe-meta-item">
+      <dt>Yield</dt>
+      <dd>{{ page.yield }}</dd>
+    </div>
+    {% endif %}
+
+    {% if page.cook_temp %}
+    <div class="recipe-meta-item">
+      <dt>Temperature</dt>
+      <dd>{{ page.cook_temp }}</dd>
+    </div>
+    {% endif %}
+
+    {% if page.cook_method %}
+    <div class="recipe-meta-item">
+      <dt>Method</dt>
+      <dd>{{ page.cook_method }}</dd>
+    </div>
+    {% endif %}
+
+  </dl>
+
+
+  <nav
+    class="recipe-jump-nav"
+    aria-label="Recipe sections"
+  >
+
+    <a href="#ingredients">Ingredients</a>
+    <a href="#instructions">Instructions</a>
+    <a href="#notes">Notes</a>
+
+  </nav>
+
+
+  <div class="recipe-content">
+
+    <div
+      class="recipe-scaling"
+      aria-label="Recipe scaling"
+    >
+
+      <span class="recipe-scaling-label">
+        Scale:
+      </span>
+
+      <button
+        type="button"
+        data-scale="0.5"
+      >½×</button>
+
+      <button
+        type="button"
+        data-scale="1"
+      >1×</button>
+
+      <button
+        type="button"
+        data-scale="1.5"
+      >1½×</button>
+
+      <button
+        type="button"
+        data-scale="2"
+      >2×</button>
+
     </div>
 
+    {{ content }}
 
-    {% if page.source %}
-        <footer class="recipe-source">
+  </div>
 
-            <strong>Source:</strong>
 
-            {% if page.source_url %}
-                <a
-                    href="{{ page.source_url }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >{{ page.source }}</a>
-            {% else %}
-                {{ page.source }}
-            {% endif %}
+  {% if page.source %}
 
-        </footer>
+  <footer class="recipe-source">
+
+    <strong>Source:</strong>
+
+    {% if page.source_url %}
+
+    <a
+      href="{{ page.source_url }}"
+      target="_blank"
+      rel="noopener noreferrer"
+    >{{ page.source }}</a>
+
+    {% else %}
+
+    {{ page.source }}
+
     {% endif %}
+
+  </footer>
+
+  {% endif %}
+
 
 </article>
