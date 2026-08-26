@@ -67,6 +67,7 @@ Examples:
 1.5 cups milk
 2–3 cloves garlic
 3 1/2 cups (350 g) rolled oats
+```
 
 ## Quantity Conversion
 
@@ -78,18 +79,23 @@ Examples:
 salt to taste
 pepper as needed
 a pinch of cinnamon
+```
 
 ## Alternate measurements
 
 A parenthetical measurement immediately following the primary quantity is treated as an alternate measurement.
 
 For example:
+```
 3 1/2 cups (350 g) rolled oats
+```
 
 contains:
+```
 * Primary measurement: 3 1/2 cups
 * Alternate measurement: 350 g
 * Ingredient: rolled oats
+```
 
 ## Unit conversion
 
