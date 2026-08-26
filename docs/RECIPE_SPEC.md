@@ -114,11 +114,8 @@ The default_scale schema affects ingredient quantities only.
 
 It should **not** automatically change:
 
-prep time
-inactive/rest time
-cook time
-cooking temperature
-equipment
-instructions
+- yield
+- inactive/rest time
+- cook time
 notes
 yield
