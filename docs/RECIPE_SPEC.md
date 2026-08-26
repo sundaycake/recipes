@@ -44,3 +44,11 @@ Recipes may contain:
 
 ## Example
 
+
+## Ingredient Quantities
+
+Ingredient quantities may be whole numbers, fractions, mixed numbers, decimals, ranges, and optional parenthetical alternate measurements.
+
+## Quantity Conversion
+
+Ingredients that cannot be confidently interpreted numerically are left unchanged when scaling.
