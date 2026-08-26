@@ -490,10 +490,31 @@
      */
 
     window.RecipeIngredients = {
-        parse: parseIngredient,
-        scale: scaleIngredient,
-        formatNumber,
-        findIngredientList
-    };
+    parse: parseIngredient,
+    scale: scaleIngredient,
+    formatNumber,
+    findIngredientList
+};
 
 })();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const list = RecipeIngredients.findIngredientList();
+
+    if (!list) {
+        console.log("Ingredients list not found.");
+        return;
+    }
+
+    console.log("Ingredients list found:");
+
+    list.querySelectorAll("li").forEach(function (item) {
+        console.log(
+            item.textContent,
+            RecipeIngredients.parse(item.textContent)
+        );
+    });
+
+});
