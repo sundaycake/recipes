@@ -1,6 +1,6 @@
 # Recipe Specification
 
-Version: 1.0
+Version: 1.1
 Status: Active
 
 ## Purpose
@@ -45,10 +45,59 @@ Recipes may contain:
 ## Example
 
 
-## Ingredient Quantities
+## Ingredient Syntax
 
-Ingredient quantities may be whole numbers, fractions, mixed numbers, decimals, ranges, and optional parenthetical alternate measurements.
+Ingredient quantities are written naturally in Markdown.
+
+The parser supports:
+
+- Whole numbers
+- Fractions
+- Mixed numbers
+- Decimal quantities
+- Quantity ranges
+- Optional parenthetical alternate measurements
+
+Examples:
+
+```text
+2 eggs
+1/2 cup butter
+3 1/2 cups rolled oats
+1.5 cups milk
+2–3 cloves garlic
+3 1/2 cups (350 g) rolled oats
 
 ## Quantity Conversion
 
 Ingredients that cannot be confidently interpreted numerically are left unchanged when scaling.
+
+Examples:
+
+```text
+salt to taste
+pepper as needed
+a pinch of cinnamon
+
+## Alternate measurements
+
+A parenthetical measurement immediately following the primary quantity is treated as an alternate measurement.
+
+For example:
+3 1/2 cups (350 g) rolled oats
+
+contains:
+* Primary measurement: 3 1/2 cups
+* Alternate measurement: 350 g
+* Ingredient: rolled oats
+
+## Unit conversion
+
+Scaling and unit conversion are separate operations.
+
+Scaling changes the quantity while preserving the author's original units.
+
+Unit conversion changes the displayed unit when the requested conversion is known and reliable.
+
+Ingredient-specific volume-to-mass conversions are not assumed unless an explicit mass equivalent is supplied by the recipe or a trusted ingredient conversion is available.
+
