@@ -2,16 +2,22 @@
 recipe: Granola
 description: Andrew's amazing granola
 image: 
+
 category: Desserts
 tags:
   - breakfast
   - baking
+    
+default_scale: 2
 yield: About 4 cups
+
 prep_active: 30 minutes
 prep_inactive: 3 hours
 cook_time: 100 minutes
+
 cook_temp: 300°F (150°C)
 cook_method: bake
+
 source: Serious Eats
 source_url: https://www.seriouseats.com/crispy-homemade-granola-recipe
 ---
