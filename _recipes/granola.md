@@ -3,7 +3,7 @@ recipe: Granola
 description: Andrew's amazing granola
 image: 
 
-category: Desserts
+category: Dessert
 tags:
   - breakfast
   - baking
