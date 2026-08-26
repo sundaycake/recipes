@@ -1,8 +1,9 @@
 /*
  * Recipe ingredient parsing and scaling
  *
- * This parser intentionally handles common, unambiguous
- * recipe quantities and leaves ambiguous quantities alone.
+ * The Markdown remains the source of truth.
+ * This file provides a machine-readable interpretation
+ * for interactive scaling and unit conversion.
  */
 
 (function () {
@@ -10,199 +11,154 @@
     "use strict";
 
 
-    /*
-     * Units understood by the parser.
-     *
-     * The canonical name is used internally.
-     */
+    /* ==================================================
+       1. UNIT DEFINITIONS
+       ================================================== */
 
     const UNITS = {
 
         tsp: {
-            aliases: [
-                "tsp",
-                "teaspoon",
-                "teaspoons"
-            ],
+            aliases: ["tsp", "teaspoon", "teaspoons"],
             type: "volume"
         },
 
         tbsp: {
-            aliases: [
-                "tbsp",
-                "Tbsp",
-                "tablespoon",
-                "tablespoons"
-            ],
+            aliases: ["tbsp", "Tbsp", "tablespoon", "tablespoons"],
             type: "volume"
         },
 
         cup: {
-            aliases: [
-                "cup",
-                "cups"
-            ],
+            aliases: ["cup", "cups"],
             type: "volume"
         },
 
         "fl oz": {
-            aliases: [
-                "fl oz",
-                "fluid ounce",
-                "fluid ounces"
-            ],
+            aliases: ["fl oz", "fluid ounce", "fluid ounces"],
             type: "volume"
         },
 
         pint: {
-            aliases: [
-                "pint",
-                "pints"
-            ],
+            aliases: ["pint", "pints"],
             type: "volume"
         },
 
         quart: {
-            aliases: [
-                "quart",
-                "quarts"
-            ],
+            aliases: ["quart", "quarts"],
             type: "volume"
         },
 
         gallon: {
-            aliases: [
-                "gallon",
-                "gallons"
-            ],
+            aliases: ["gallon", "gallons"],
             type: "volume"
         },
 
         ml: {
-            aliases: [
-                "ml",
-                "mL",
-                "milliliter",
-                "milliliters"
-            ],
+            aliases: ["ml", "mL", "milliliter", "milliliters"],
             type: "volume"
         },
 
         l: {
-            aliases: [
-                "l",
-                "L",
-                "liter",
-                "liters"
-            ],
+            aliases: ["l", "L", "liter", "liters"],
             type: "volume"
         },
 
         g: {
-            aliases: [
-                "g",
-                "gram",
-                "grams"
-            ],
+            aliases: ["g", "gram", "grams"],
             type: "mass"
         },
 
         kg: {
-            aliases: [
-                "kg",
-                "kilogram",
-                "kilograms"
-            ],
+            aliases: ["kg", "kilogram", "kilograms"],
             type: "mass"
         },
 
         oz: {
-            aliases: [
-                "oz",
-                "ounce",
-                "ounces"
-            ],
+            aliases: ["oz", "ounce", "ounces"],
             type: "mass"
         },
 
         lb: {
-            aliases: [
-                "lb",
-                "lbs",
-                "pound",
-                "pounds"
-            ],
+            aliases: ["lb", "lbs", "pound", "pounds"],
             type: "mass"
         }
 
     };
 
 
-    /*
-     * Convert a fraction or mixed number to a decimal.
-     *
-     * Examples:
-     *
-     * 1/2     -> 0.5
-     * 3/4     -> 0.75
-     * 3 1/2   -> 3.5
-     * 2       -> 2
-     */
+    /* ==================================================
+       2. NUMBER PARSING
+       ================================================== */
 
     function parseNumber(value) {
 
         value = value.trim();
 
-        if (value.includes(" ")) {
+        /*
+         * Mixed number:
+         *
+         * 3 1/2
+         */
 
-            const parts = value.split(/\s+/);
+        const mixedMatch = value.match(
+            /^(\d+(?:\.\d+)?)\s+(\d+)\/(\d+)$/
+        );
 
-            if (parts.length === 2) {
+        if (mixedMatch) {
 
-                const whole = parseFloat(parts[0]);
-                const fraction = parseNumber(parts[1]);
+            const whole = parseFloat(mixedMatch[1]);
+            const numerator = parseFloat(mixedMatch[2]);
+            const denominator = parseFloat(mixedMatch[3]);
 
-                if (!Number.isNaN(whole) && fraction !== null) {
-                    return whole + fraction;
-                }
+            if (denominator !== 0) {
+                return whole + numerator / denominator;
             }
+
+            return null;
         }
 
-        if (value.includes("/")) {
 
-            const parts = value.split("/");
+        /*
+         * Fraction:
+         *
+         * 3/4
+         */
 
-            if (parts.length === 2) {
+        const fractionMatch = value.match(
+            /^(\d+)\/(\d+)$/
+        );
 
-                const numerator = parseFloat(parts[0]);
-                const denominator = parseFloat(parts[1]);
+        if (fractionMatch) {
 
-                if (
-                    !Number.isNaN(numerator) &&
-                    !Number.isNaN(denominator) &&
-                    denominator !== 0
-                ) {
-                    return numerator / denominator;
-                }
+            const numerator = parseFloat(fractionMatch[1]);
+            const denominator = parseFloat(fractionMatch[2]);
+
+            if (denominator !== 0) {
+                return numerator / denominator;
             }
+
+            return null;
         }
 
-        const number = parseFloat(value);
 
-        return Number.isNaN(number)
-            ? null
-            : number;
+        /*
+         * Decimal or whole number.
+         */
+
+        const number = Number(value);
+
+        return Number.isFinite(number)
+            ? number
+            : null;
     }
 
 
-    /*
-     * Convert a decimal back into a friendly recipe fraction.
-     */
+    /* ==================================================
+       3. NUMBER FORMATTING
+       ================================================== */
 
     function formatNumber(value) {
 
         const commonFractions = [
-            [0, "0"],
             [1 / 8, "1/8"],
             [1 / 4, "1/4"],
             [1 / 3, "1/3"],
@@ -216,12 +172,14 @@
 
         const tolerance = 0.01;
 
+        const rounded = Math.round(value);
+
+        if (Math.abs(value - rounded) < tolerance) {
+            return String(rounded);
+        }
+
         const whole = Math.floor(value);
         const fraction = value - whole;
-
-        if (Math.abs(fraction) < tolerance) {
-            return String(whole);
-        }
 
         for (const [decimal, text] of commonFractions) {
 
@@ -235,25 +193,13 @@
             }
         }
 
-        /*
-         * Fall back to a sensible decimal.
-         */
-
         return Number(value.toFixed(2)).toString();
     }
 
 
-    /*
-     * Normalize Unicode fraction characters.
-     *
-     * This allows:
-     *
-     * ½ cup
-     *
-     * to behave like:
-     *
-     * 1/2 cup
-     */
+    /* ==================================================
+       4. FRACTION NORMALIZATION
+       ================================================== */
 
     function normalizeFractions(text) {
 
@@ -282,9 +228,101 @@
     }
 
 
-    /*
-     * Parse the beginning of an ingredient line.
-     */
+    /* ==================================================
+       5. ALTERNATE MEASUREMENT PARSING
+       ================================================== */
+
+    function parseAlternateMeasurement(text) {
+
+        /*
+         * Look for:
+         *
+         * (350 g)
+         * (240 ml)
+         * (8 oz)
+         *
+         * We deliberately only recognize parentheses
+         * containing a number followed by a known unit.
+         */
+
+        const unitAliases = Object.values(UNITS)
+            .flatMap(unit => unit.aliases)
+            .sort((a, b) => b.length - a.length)
+            .map(alias =>
+                alias.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+            );
+
+        const unitPattern = unitAliases.join("|");
+
+        const pattern = new RegExp(
+            `\\(\\s*(\\d+(?:\\.\\d+)?(?:\\s+\\d+\\/\\d+)?|\\d+\\/\\d+)\\s+(${unitPattern})\\s*\\)`,
+            "i"
+        );
+
+        const match = text.match(pattern);
+
+        if (!match) {
+            return {
+                text,
+                alternate: null
+            };
+        }
+
+        const quantity = parseNumber(match[1]);
+
+        if (quantity === null) {
+            return {
+                text,
+                alternate: null
+            };
+        }
+
+        const unitText = match[2];
+
+        let unit = null;
+
+        for (const [canonical, definition] of Object.entries(UNITS)) {
+
+            if (
+                definition.aliases.some(
+                    alias =>
+                        alias.toLowerCase() === unitText.toLowerCase()
+                )
+            ) {
+
+                unit = {
+                    canonical,
+                    type: definition.type,
+                    original: unitText
+                };
+
+                break;
+            }
+        }
+
+        if (!unit) {
+            return {
+                text,
+                alternate: null
+            };
+        }
+
+        return {
+            text:
+                text.slice(0, match.index) +
+                text.slice(match.index + match[0].length),
+
+            alternate: {
+                quantity,
+                unit
+            }
+        };
+    }
+
+
+    /* ==================================================
+       6. INGREDIENT PARSING
+       ================================================== */
 
     function parseIngredient(text) {
 
@@ -292,11 +330,11 @@
 
         text = normalizeFractions(text.trim());
 
-        /*
-         * Look for an optional leading modifier.
-         */
-
         let modifier = "";
+
+        /*
+         * Optional approximation modifier.
+         */
 
         const modifierMatch = text.match(
             /^(about|approximately|roughly)\s+/i
@@ -310,19 +348,22 @@
 
 
         /*
-         * Quantity:
+         * Primary quantity.
          *
-         * 2
-         * 1/2
+         * Order matters:
+         *
          * 3 1/2
+         * 3/4
          * 1.5
+         * 3
          */
 
         const quantityMatch = text.match(
-            /^(\d+(?:\.\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+)/
+            /^(\d+(?:\.\d+)?\s+\d+\/\d+|\d+\/\d+|\d+(?:\.\d+)?)/
         );
 
         if (!quantityMatch) {
+
             return {
                 original,
                 scalable: false
@@ -334,27 +375,27 @@
         const quantity = parseNumber(quantityText);
 
         if (quantity === null) {
+
             return {
                 original,
                 scalable: false
             };
         }
 
-        text = text.slice(quantityText.length).trim();
+        text = text.slice(quantityMatch[0].length).trim();
 
 
         /*
          * Optional range.
          *
-         * Example:
-         *
-         * 2-3 cloves garlic
+         * 2-3
+         * 2–3
          */
 
         let maximum = null;
 
         const rangeMatch = text.match(
-            /^(?:-|–|—)\s*(\d+(?:\.\d+)?(?:\s+\d+\/\d+)?|\d+\/\d+)/
+            /^(?:-|–|—)\s*(\d+(?:\.\d+)?\s+\d+\/\d+|\d+\/\d+|\d+(?:\.\d+)?)/
         );
 
         if (rangeMatch) {
@@ -366,12 +407,26 @@
 
 
         /*
-         * Find a recognized unit.
+         * Primary unit.
          */
 
         let unit = null;
 
         const unitEntries = Object.entries(UNITS);
+
+        unitEntries.sort((a, b) => {
+
+            const aLength = Math.max(
+                ...a[1].aliases.map(alias => alias.length)
+            );
+
+            const bLength = Math.max(
+                ...b[1].aliases.map(alias => alias.length)
+            );
+
+            return bLength - aLength;
+        });
+
 
         for (const [canonical, definition] of unitEntries) {
 
@@ -385,7 +440,10 @@
                 .join("|");
 
             const match = text.match(
-                new RegExp(`^(${aliasPattern})(?=\\s|$)`, "i")
+                new RegExp(
+                    `^(${aliasPattern})(?=\\s|$)`,
+                    "i"
+                )
             );
 
             if (match) {
@@ -404,11 +462,24 @@
 
 
         /*
-         * If there is no unit, this may still be a count-based
-         * ingredient such as "2 eggs".
+         * Parse an optional alternate measurement.
+         */
+
+        const alternateResult =
+            parseAlternateMeasurement(text);
+
+        text = alternateResult.text.trim();
+
+        const alternate =
+            alternateResult.alternate;
+
+
+        /*
+         * Whatever remains is the ingredient description.
          */
 
         const ingredient = text;
+
 
         return {
             original,
@@ -416,15 +487,16 @@
             quantity,
             maximum,
             unit,
+            alternate,
             ingredient,
             scalable: true
         };
     }
 
 
-    /*
-     * Scale a parsed ingredient.
-     */
+    /* ==================================================
+       7. SCALING
+       ================================================== */
 
     function scaleIngredient(parsed, factor) {
 
@@ -432,7 +504,8 @@
             return parsed.original;
         }
 
-        const minimum = parsed.quantity * factor;
+        const minimum =
+            parsed.quantity * factor;
 
         let result = "";
 
@@ -445,76 +518,136 @@
         if (parsed.maximum !== null) {
 
             result += "–";
-            result += formatNumber(parsed.maximum * factor);
+            result += formatNumber(
+                parsed.maximum * factor
+            );
         }
 
         if (parsed.unit) {
-            result += " " + parsed.unit.original;
+
+            result += " ";
+            result += parsed.unit.original;
         }
 
-        result += " " + parsed.ingredient;
+        /*
+         * Scale the alternate measurement too.
+         */
+
+        if (parsed.alternate) {
+
+            result += " (";
+            result += formatNumber(
+                parsed.alternate.quantity * factor
+            );
+            result += " ";
+            result += parsed.alternate.unit.original;
+            result += ")";
+        }
+
+        if (parsed.ingredient) {
+
+            result += " ";
+            result += parsed.ingredient;
+        }
 
         return result;
     }
 
+
+    /* ==================================================
+       8. INGREDIENT LIST DISCOVERY
+       ================================================== */
+
     function findIngredientList() {
 
-    const heading = document.querySelector(
-        ".recipe-content h2#ingredients"
-    );
+        const heading = document.querySelector(
+            ".recipe-content h2#ingredients"
+        );
 
-    if (!heading) {
+        if (!heading) {
+            return null;
+        }
+
+        let element =
+            heading.nextElementSibling;
+
+        while (element) {
+
+            if (element.tagName === "UL") {
+                return element;
+            }
+
+            if (element.tagName === "H2") {
+                break;
+            }
+
+            element =
+                element.nextElementSibling;
+        }
+
         return null;
     }
 
-    let element = heading.nextElementSibling;
 
-    while (element) {
-
-        if (element.tagName === "UL") {
-            return element;
-        }
-
-        if (element.tagName === "H2") {
-            break;
-        }
-
-        element = element.nextElementSibling;
-    }
-
-    return null;
-}
-
-    /*
-     * Expose the parser for later stages.
-     */
+    /* ==================================================
+       9. PUBLIC API
+       ================================================== */
 
     window.RecipeIngredients = {
-    parse: parseIngredient,
-    scale: scaleIngredient,
-    formatNumber,
-    findIngredientList
-};
+
+        parse: parseIngredient,
+
+        scale: scaleIngredient,
+
+        formatNumber,
+
+        findIngredientList
+
+    };
+
 
 })();
 
 
-document.addEventListener("DOMContentLoaded", function () {
+/* ==================================================
+   TEMPORARY DEVELOPMENT TEST
+   ================================================== */
 
-    const list = RecipeIngredients.findIngredientList();
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    if (!list) {
-        console.log("Ingredients list not found.");
-        return;
-    }
+        const list =
+            RecipeIngredients.findIngredientList();
 
-    console.log("Ingredients list found:");
+        if (!list) {
 
-    list.querySelectorAll("li").forEach(function (item) {
+            console.log(
+                "Ingredients list not found."
+            );
+
+            return;
+        }
+
         console.log(
-            item.textContent,
-            RecipeIngredients.parse(item.textContent)
+            "Ingredients list found:"
         );
-    });
 
-});
+        list.querySelectorAll("li").forEach(
+            function (item) {
+
+                const parsed =
+                    RecipeIngredients.parse(
+                        item.textContent
+                    );
+
+                console.log(
+                    item.textContent,
+                    parsed
+                );
+
+            }
+        );
+
+    }
+);
