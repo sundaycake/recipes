@@ -21,6 +21,7 @@ used by recipes in this repository.
 - `category` — Primary recipe category.
 - `tags` — List of descriptive tags.
 - `yield` — Expected quantity produced.
+- `default_scale` — Optional numeric multiplier used when initially displaying a recipe, defaults to 1. Allows decimal values
 - `prep_active` — Active preparation time.
 - `prep_inactive` — Inactive preparation/resting time.
 - `cook_time` — Cooking time.
