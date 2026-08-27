@@ -557,35 +557,48 @@
     /* ==================================================
        8. INGREDIENT LIST DISCOVERY
        ================================================== */
-
-    function findIngredientList() {
-
+    
+    function findIngredientLists() {
+    
         const heading = document.querySelector(
             ".recipe-content h2#ingredients"
         );
-
+    
         if (!heading) {
-            return null;
+            return [];
         }
-
+    
+        const lists = [];
+    
         let element =
             heading.nextElementSibling;
-
+    
         while (element) {
-
-            if (element.tagName === "UL") {
-                return element;
-            }
-
+    
+            /*
+             * The Ingredients section ends at the
+             * next H2 heading.
+             *
+             * H3 headings such as:
+             *
+             * ### Dry
+             * ### Wet
+             *
+             * are therefore still part of Ingredients.
+             */
             if (element.tagName === "H2") {
                 break;
             }
-
+    
+            if (element.tagName === "UL") {
+                lists.push(element);
+            }
+    
             element =
                 element.nextElementSibling;
         }
-
-        return null;
+    
+        return lists;
     }
 
 
@@ -594,15 +607,14 @@
        ================================================== */
 
     window.RecipeIngredients = {
-
+    
         parse: parseIngredient,
-
         scale: scaleIngredient,
-
+    
         formatNumber,
-
-        findIngredientList
-
+    
+        findIngredientLists
+    
     };
 
 
@@ -624,13 +636,12 @@ document.addEventListener(
         }
 
 
-        const ingredientList =
-            RecipeIngredients.findIngredientList();
-
-        if (!ingredientList) {
+        const ingredientLists =
+            RecipeIngredients.findIngredientLists();
+        
+        if (ingredientLists.length === 0) {
             return;
         }
-
 
         /*
          * Preserve the original ingredient text.
@@ -640,25 +651,28 @@ document.addEventListener(
          */
 
         const ingredients = [];
-
-        ingredientList
-            .querySelectorAll("li")
-            .forEach(function (item) {
-
-                const original =
-                    item.textContent.trim();
-
-                const parsed =
-                    RecipeIngredients.parse(original);
-
-                ingredients.push({
-                    element: item,
-                    original,
-                    parsed
+        
+        ingredientLists.forEach(function (list) {
+        
+            list
+                .querySelectorAll("li")
+                .forEach(function (item) {
+        
+                    const original =
+                        item.textContent.trim();
+        
+                    const parsed =
+                        RecipeIngredients.parse(original);
+        
+                    ingredients.push({
+                        element: item,
+                        original,
+                        parsed
+                    });
+        
                 });
-
-            });
-
+        
+        });
 
         /*
          * Read the recipe's default scale.
