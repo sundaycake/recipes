@@ -651,7 +651,7 @@ document.addEventListener(
          */
 
         const ingredients = [];
-        
+
         ingredientLists.forEach(function (list) {
         
             list
@@ -673,6 +673,62 @@ document.addEventListener(
                 });
         
         });
+        
+        /*
+         * Find standalone Optional: paragraphs
+         * inside the Ingredients section.
+         */
+        const ingredientsHeading =
+            document.querySelector(
+                ".recipe-content h2#ingredients"
+            );
+        
+        if (ingredientsHeading) {
+        
+            let element =
+                ingredientsHeading.nextElementSibling;
+        
+            while (element) {
+        
+                if (element.tagName === "H2") {
+                    break;
+                }
+        
+                if (
+                    element.tagName === "P" &&
+                    /^optional\s*:/i.test(
+                        element.textContent.trim()
+                    )
+                ) {
+        
+                    const original =
+                        element.textContent.trim();
+        
+                    const ingredientText =
+                        original.replace(
+                            /^optional\s*:\s*/i,
+                            ""
+                        );
+        
+                    const parsed =
+                        RecipeIngredients.parse(
+                            ingredientText
+                        );
+        
+                    ingredients.push({
+                        element,
+                        original,
+                        prefix: "Optional: ",
+                        parsed
+                    });
+        
+                }
+        
+                element =
+                    element.nextElementSibling;
+            }
+        
+        }
 
         /*
          * Read the recipe's default scale.
@@ -698,23 +754,28 @@ document.addEventListener(
         function renderIngredients(scale) {
 
             ingredients.forEach(function (entry) {
-
+        
                 if (!entry.parsed.scalable) {
-
+        
                     entry.element.textContent =
                         entry.original;
-
+        
                     return;
                 }
-
-                entry.element.textContent =
+        
+                const scaled =
                     RecipeIngredients.scale(
                         entry.parsed,
                         scale
                     );
-
+        
+                entry.element.textContent =
+                    entry.prefix
+                        ? entry.prefix + scaled
+                        : scaled;
+        
             });
-
+        
         }
 
 
@@ -756,6 +817,158 @@ document.addEventListener(
 
 
         /*
+         * Read scale notes from the recipe frontmatter.
+         */
+        let scaleNotes = [];
+        
+        try {
+        
+            const rawScaleNotes =
+                recipe.dataset.scaleNotes;
+        
+            if (rawScaleNotes) {
+        
+                scaleNotes =
+                    JSON.parse(rawScaleNotes)
+                        .map(function (entry) {
+        
+                            const parts =
+                                entry.split("|")
+                                    .map(function (part) {
+                                        return part.trim();
+                                    });
+        
+                            const scale =
+                                parseFloat(parts.shift());
+        
+                            return {
+                                scale,
+                                notes: parts.filter(Boolean)
+                            };
+        
+                        })
+                        .filter(function (entry) {
+                            return (
+                                Number.isFinite(entry.scale) &&
+                                entry.notes.length > 0
+                            );
+                        });
+        
+            }
+        
+        } catch (error) {
+        
+            console.warn(
+                "Unable to parse recipe scale notes.",
+                error
+            );
+        
+        }
+
+
+        /*
+         * Display scale notes associated with the
+         * current scale.
+         *
+         * If there is no exact match, fall back
+         * to the 1× notes.
+         */
+        function updateScaleNotes(scale) {
+        
+            const ingredientsHeading =
+                document.querySelector(
+                    ".recipe-content h2#ingredients"
+                );
+        
+            if (!ingredientsHeading) {
+                return;
+            }
+        
+            let notesContainer =
+                document.querySelector(
+                    ".recipe-scale-notes"
+                );
+        
+            if (scaleNotes.length === 0) {
+        
+                if (notesContainer) {
+                    notesContainer.remove();
+                }
+        
+                return;
+            }
+        
+            let matchingNotes =
+                scaleNotes.find(function (entry) {
+                    return entry.scale === scale;
+                });
+        
+            if (!matchingNotes) {
+        
+                matchingNotes =
+                    scaleNotes.find(function (entry) {
+                        return entry.scale === 1;
+                    });
+        
+            }
+        
+            if (!matchingNotes) {
+        
+                if (notesContainer) {
+                    notesContainer.remove();
+                }
+        
+                return;
+            }
+        
+            if (!notesContainer) {
+        
+                notesContainer =
+                    document.createElement("div");
+        
+                notesContainer.className =
+                    "recipe-scale-notes";
+        
+                ingredientsHeading
+                    .parentNode
+                    .insertBefore(
+                        notesContainer,
+                        ingredientsHeading.nextSibling
+                    );
+        
+            }
+        
+            notesContainer.innerHTML = "";
+        
+            const label =
+                document.createElement("strong");
+        
+            label.textContent =
+                "Scale Notes (" +
+                RecipeIngredients.formatNumber(
+                    matchingNotes.scale
+                ) +
+                "×)";
+        
+            notesContainer.appendChild(label);
+        
+            matchingNotes.notes.forEach(
+                function (note) {
+        
+                    const line =
+                        document.createElement("div");
+        
+                    line.textContent = note;
+        
+                    notesContainer.appendChild(line);
+        
+                }
+            );
+        
+        }
+
+        
+        /*
          * Change the current scale.
          */
 
@@ -767,17 +980,21 @@ document.addEventListener(
             ) {
                 return;
             }
-
+        
             currentScale = scale;
-
+        
             renderIngredients(
                 currentScale
             );
-
+        
             updateButtons(
                 currentScale
             );
-
+        
+            updateScaleNotes(
+                currentScale
+            );
+        
         }
 
 
