@@ -653,26 +653,51 @@ document.addEventListener(
         const ingredients = [];
 
         ingredientLists.forEach(function (list) {
-        
-            list
-                .querySelectorAll("li")
-                .forEach(function (item) {
-        
-                    const original =
-                        item.textContent.trim();
-        
-                    const parsed =
-                        RecipeIngredients.parse(original);
-        
-                    ingredients.push({
-                        element: item,
-                        original,
-                        parsed
-                    });
-        
+
+        list
+            .querySelectorAll("li")
+            .forEach(function (item) {
+    
+                const original =
+                    item.textContent.trim();
+    
+                /*
+                 * Optional ingredients are still normal
+                 * ingredients for scaling purposes.
+                 *
+                 * Remove the "Optional:" prefix before
+                 * passing the text to the ingredient parser,
+                 * then restore it when rendering.
+                 */
+                const optionalMatch =
+                    original.match(
+                        /^optional\s*:\s*/i
+                    );
+    
+                const parseText =
+                    optionalMatch
+                        ? original.slice(
+                            optionalMatch[0].length
+                        ).trim()
+                        : original;
+    
+                const parsed =
+                    RecipeIngredients.parse(
+                        parseText
+                    );
+    
+                ingredients.push({
+                    element: item,
+                    original,
+                    parsed,
+                    prefix: optionalMatch
+                        ? optionalMatch[0]
+                        : ""
                 });
-        
-        });
+    
+            });
+    
+    });
         
         /*
          * Find standalone Optional: paragraphs
@@ -770,9 +795,11 @@ document.addEventListener(
                     );
         
                 entry.element.textContent =
-                    entry.prefix
-                        ? entry.prefix + scaled
-                        : scaled;
+                    entry.prefix +
+                    RecipeIngredients.scale(
+                        entry.parsed,
+                        scale
+                    );
         
             });
         
