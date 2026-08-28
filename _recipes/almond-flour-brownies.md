@@ -30,9 +30,6 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 ## Equipment
 
 1. Hand blender or stand mixer
-2. Scale:
-- For 1.0x use 8x8 pan
-- For 1.5x use 9x13 pan
 
 ## Ingredients
 
