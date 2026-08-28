@@ -5,6 +5,7 @@ layout: default
 <article
   class="recipe-card"
   data-default-scale="{{ page.default_scale | default: 1 }}"
+  data-scale-notes="{{ page.scale_notes | jsonify | escape }}"
 >
 
   <header class="recipe-header">
