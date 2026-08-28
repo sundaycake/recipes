@@ -8,8 +8,13 @@ tags:
   - baking
   - gluten free
 
-default_scale: 1.5
 yield: 12 servings
+default_scale: 1.5
+scale_notes:
+  - "1.0 | Use 8x8 pan"
+  - "1.5 | Use 9x13 pan"
+  - "0.5 | Use 6x6 pan"
+  - "2.0 | Use 12x16 pan"
 
 prep_active: 20 minutes
 prep_inactive: 
