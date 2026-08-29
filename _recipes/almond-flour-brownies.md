@@ -11,10 +11,10 @@ tags:
 yield: 12 servings
 default_scale: 1.5
 scale_notes:
-  - "0.5 | Use 6x6 pan"
-  - "1.0 | Use 8x8 pan"
-  - "1.5 | Use 9x13 pan"
-  - "2.0 | Use 12x16 pan"
+  - "0.5 | Use a 6x6 pan"
+  - "1.0 | Use a 8x8 pan"
+  - "1.5 | Use a 9x13 pan"
+  - "2.0 | Use a 12x16 pan"
 
 prep_active: 20 minutes
 prep_inactive: 
