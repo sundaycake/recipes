@@ -160,6 +160,7 @@
 
         const commonFractions = [
             [1 / 8, "1/8"],
+            [1 / 6, "1/6"],
             [1 / 4, "1/4"],
             [1 / 3, "1/3"],
             [3 / 8, "3/8"],
@@ -169,34 +170,49 @@
             [3 / 4, "3/4"],
             [7 / 8, "7/8"]
         ];
-
+    
         const tolerance = 0.01;
-
+    
         const rounded = Math.round(value);
-
+    
         if (Math.abs(value - rounded) < tolerance) {
             return String(rounded);
         }
-
+    
         const whole = Math.floor(value);
         const fraction = value - whole;
-
+    
         for (const [decimal, text] of commonFractions) {
-
+    
             if (Math.abs(fraction - decimal) < tolerance) {
-
+    
                 if (whole === 0) {
                     return text;
                 }
-
+    
                 return `${whole} ${text}`;
             }
         }
-
+    
         return Number(value.toFixed(2)).toString();
     }
 
 
+    function formatQuantity(value, unit) {
+
+        /*
+         * Grams are practical to measure as whole grams.
+         *
+         * Example:
+         * 57.5 g → 58 g
+         */
+        if (unit === "g") {
+            return String(Math.round(value));
+        }
+    
+        return formatNumber(value);
+    }
+    
     /* ==================================================
        4. FRACTION NORMALIZATION
        ================================================== */
@@ -513,32 +529,43 @@
             result += parsed.modifier + " ";
         }
 
-        result += formatNumber(minimum);
-
+        result += formatQuantity(
+            minimum,
+            parsed.unit
+                ? parsed.unit.canonical
+                : null
+        );
+        
         if (parsed.maximum !== null) {
-
+        
             result += "–";
-            result += formatNumber(
-                parsed.maximum * factor
+        
+            result += formatQuantity(
+                parsed.maximum * factor,
+                parsed.unit
+                    ? parsed.unit.canonical
+                    : null
             );
         }
-
+        
         if (parsed.unit) {
-
+        
             result += " ";
             result += parsed.unit.original;
         }
-
+        
         /*
          * Scale the alternate measurement too.
          */
-
         if (parsed.alternate) {
-
+        
             result += " (";
-            result += formatNumber(
-                parsed.alternate.quantity * factor
+        
+            result += formatQuantity(
+                parsed.alternate.quantity * factor,
+                parsed.alternate.unit.canonical
             );
+        
             result += " ";
             result += parsed.alternate.unit.original;
             result += ")";
@@ -796,10 +823,7 @@ document.addEventListener(
         
                 entry.element.textContent =
                     entry.prefix +
-                    RecipeIngredients.scale(
-                        entry.parsed,
-                        scale
-                    );
+                    scaled;
         
             });
         
@@ -901,35 +925,34 @@ document.addEventListener(
          * to the 1× notes.
          */
         function updateScaleNotes(scale) {
-        
-            const ingredientsHeading =
-                document.querySelector(
-                    ".recipe-content h2#ingredients"
-                );
-        
-            if (!ingredientsHeading) {
-                return;
-            }
-        
-            let notesContainer =
+
+            const notesContainer =
                 document.querySelector(
                     ".recipe-scale-notes"
                 );
         
-            if (scaleNotes.length === 0) {
-        
-                if (notesContainer) {
-                    notesContainer.remove();
-                }
-        
+            if (!notesContainer) {
                 return;
             }
         
+            notesContainer.innerHTML = "";
+        
+            if (scaleNotes.length === 0) {
+                return;
+            }
+        
+            /*
+             * Prefer an exact scale match.
+             */
             let matchingNotes =
                 scaleNotes.find(function (entry) {
                     return entry.scale === scale;
                 });
         
+            /*
+             * If there is no exact match, fall back
+             * to the 1× notes.
+             */
             if (!matchingNotes) {
         
                 matchingNotes =
@@ -940,32 +963,8 @@ document.addEventListener(
             }
         
             if (!matchingNotes) {
-        
-                if (notesContainer) {
-                    notesContainer.remove();
-                }
-        
                 return;
             }
-        
-            if (!notesContainer) {
-        
-                notesContainer =
-                    document.createElement("div");
-        
-                notesContainer.className =
-                    "recipe-scale-notes";
-        
-                ingredientsHeading
-                    .parentNode
-                    .insertBefore(
-                        notesContainer,
-                        ingredientsHeading.nextSibling
-                    );
-        
-            }
-        
-            notesContainer.innerHTML = "";
         
             const label =
                 document.createElement("strong");
@@ -994,6 +993,60 @@ document.addEventListener(
         
         }
 
+
+        function updateIngredientsHeading(scale) {
+
+            const heading =
+                document.querySelector(
+                    ".recipe-content h2#ingredients"
+                );
+        
+            if (!heading) {
+                return;
+            }
+        
+            let indicator =
+                heading.querySelector(
+                    ".recipe-scale-indicator"
+                );
+        
+            /*
+             * 1× is the canonical recipe, so
+             * there is no indicator.
+             */
+            if (scale === 1) {
+        
+                if (indicator) {
+                    indicator.remove();
+                }
+        
+                return;
+            }
+        
+            if (!indicator) {
+        
+                indicator =
+                    document.createElement("span");
+        
+                indicator.className =
+                    "recipe-scale-indicator";
+        
+                heading.appendChild(
+                    document.createTextNode(" ")
+                );
+        
+                heading.appendChild(
+                    indicator
+                );
+        
+            }
+        
+            indicator.textContent =
+                "(Scaled to " +
+                RecipeIngredients.formatNumber(scale) +
+                "×)";
+        }
+
         
         /*
          * Change the current scale.
@@ -1019,6 +1072,10 @@ document.addEventListener(
             );
         
             updateScaleNotes(
+                currentScale
+            );
+        
+            updateIngredientsHeading(
                 currentScale
             );
         
