@@ -8,9 +8,13 @@ tags:
   - breakfast
   - baking
     
-default_scale: 2
 yield: About 4 cups
-
+default_scale: 2
+scale_notes:
+  - "1.0 | Use one 13x18 pan"
+  - "1.5 | Use two 13x18 pans"
+  - "2.0 | Use two 13x18 pans"
+    
 prep_active: 30 minutes
 prep_inactive: 3 hours
 cook_time: 100 minutes
@@ -23,7 +27,7 @@ source_url: https://www.seriouseats.com/crispy-homemade-granola-recipe
 ---
 
 ## Equipment
-* One 13x18 pan
+* Large mixing bowls
 
 ## Ingredients
 
