@@ -1041,10 +1041,21 @@ document.addEventListener(
         
             }
         
+            let label;
+        
+            if (scale === 0.5) {
+                label = "Half recipe";
+            } else if (scale === 2) {
+                label = "Double recipe";
+            } else {
+                label =
+                    "Scaled to " +
+                    RecipeIngredients.formatNumber(scale) +
+                    "×";
+            }
+        
             indicator.textContent =
-                "(Scaled to " +
-                RecipeIngredients.formatNumber(scale) +
-                "×)";
+                "(" + label + ")";
         }
 
         
