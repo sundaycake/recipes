@@ -26,9 +26,6 @@ source: Serious Eats
 source_url: https://www.seriouseats.com/crispy-homemade-granola-recipe
 ---
 
-## Equipment
-* Large mixing bowls
-
 ## Ingredients
 
 - 3 1/2 cups (350 g) rolled oats  
