@@ -1045,6 +1045,8 @@ document.addEventListener(
         
             if (scale === 0.5) {
                 label = "Half recipe";
+            } else if (scale === 1.5) {
+                label = "Scaled to 1.5x";
             } else if (scale === 2) {
                 label = "Double recipe";
             } else {
