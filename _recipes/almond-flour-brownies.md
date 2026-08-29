@@ -72,5 +72,5 @@ Reduce sugar, reduce chocolate chips, add optional brown sugar, change direction
 
 ## Revision History
 
-2025-08-14 - Initial recipe
-2026-08-24 - Reduce sugar, optional brown sugar, shiny muffin top
+- 2025-08-14 - Initial recipe
+- 2026-08-24 - Reduce sugar, optional brown sugar, shiny muffin top
