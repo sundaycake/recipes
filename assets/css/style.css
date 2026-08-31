@@ -660,3 +660,264 @@ a:hover {
         content: none;
     }
 }
+
+/* --------------------------------------------------
+   Recipe layout
+   -------------------------------------------------- */
+
+.recipe-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        280px;
+
+    gap: 2rem;
+
+    align-items: start;
+}
+
+
+/* --------------------------------------------------
+   Ingredient converter
+   -------------------------------------------------- */
+
+.ingredient-converter {
+    position: sticky;
+    top: 1rem;
+
+    padding: 1.25rem;
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    background: var(--card-background);
+}
+
+
+.ingredient-converter h2 {
+    margin: 0 0 1.25rem;
+
+    font-size: 1.15rem;
+}
+
+
+.ingredient-converter-field {
+    min-width: 0;
+}
+
+
+.ingredient-converter-field label {
+    display: block;
+
+    margin-bottom: 0.35rem;
+
+    color: var(--muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+
+.ingredient-converter input,
+.ingredient-converter select {
+    width: 100%;
+
+    padding: 0.65rem 0.7rem;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: var(--card-background);
+    color: var(--text);
+
+    font: inherit;
+}
+
+
+.ingredient-converter input:focus,
+.ingredient-converter select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+
+/* --------------------------------------------------
+   Ingredient search
+   -------------------------------------------------- */
+
+.ingredient-converter-search {
+    position: relative;
+}
+
+
+.ingredient-converter-results {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    z-index: 20;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    margin-top: 0.25rem;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: var(--card-background);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.ingredient-converter-result {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 0.65rem 0.75rem;
+
+    border: 0;
+
+    border-bottom: 1px solid var(--border);
+
+    background: transparent;
+
+    color: var(--text);
+
+    font: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.ingredient-converter-result:last-child {
+    border-bottom: 0;
+}
+
+
+.ingredient-converter-result:hover,
+.ingredient-converter-result.is-highlighted {
+    background: #faf9f7;
+}
+
+
+.ingredient-converter-result-name {
+    font-weight: 600;
+}
+
+
+.ingredient-converter-result-note {
+    margin-top: 0.1rem;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+}
+
+
+/* --------------------------------------------------
+   Amount / unit rows
+   -------------------------------------------------- */
+
+.ingredient-converter-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.25fr);
+
+    gap: 0.6rem;
+
+    margin-top: 1rem;
+}
+
+
+.ingredient-converter-swap {
+    display: block;
+
+    width: 2.25rem;
+    height: 2.25rem;
+
+    margin: 0.75rem auto 0;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: #faf9f7;
+    color: var(--text);
+
+    font-size: 1.1rem;
+
+    cursor: pointer;
+}
+
+
+.ingredient-converter-swap:hover {
+    background: var(--border);
+}
+
+
+.ingredient-converter-info {
+    min-height: 2.4em;
+
+    margin-top: 0.85rem;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+}
+
+
+/* --------------------------------------------------
+   Desktop recipe layout
+   -------------------------------------------------- */
+
+@media (min-width: 901px) {
+
+    .site-main {
+        max-width: 1100px;
+    }
+
+}
+
+
+/* --------------------------------------------------
+   Tablet / mobile
+   -------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .recipe-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .ingredient-converter {
+        position: static;
+
+        order: 2;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .ingredient-converter {
+        margin-top: 2rem;
+    }
+
+}
