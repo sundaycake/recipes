@@ -15,8 +15,8 @@ cook_time: 20 minutes
 cook_temp: Low heat
 cook_method: Stovetop
 
-source: 
-source_url: 
+source: Sugar Spun Run
+source_url: https://sugarspunrun.com/buttermilk-pancakes/
 ---
 
 ## Equipment
@@ -25,12 +25,25 @@ source_url:
 
 ## Ingredients
 
+### Flour
 - 50 g oat flour
 - 30 g flax seed meal 
 - 170 g all-purpose flour
+> OR
+- 2 cups (250 g) all-purpose flour
 
-### Alternative
-- 2 cups all-purpose flour (250 g)
+### Dry
+3 Tbsp sugar
+1.5 tsp baking powder
+1 tsp baking soda
+½ tsp salt
+
+### Wet
+
+2-2 ¼ cups buttermilk (530 ml)
+2 large eggs lightly beaten, room temperature preferred
+1 tsp vanilla extract
+4 Tbsp (57 g) unsalted butter melted and cooled
 
 ## Instructions
 
