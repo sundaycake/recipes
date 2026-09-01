@@ -763,7 +763,10 @@
         
         }
 
-        return result;
+        return {
+            text: result,
+            automaticGrams: automaticGrams !== null
+        };
     }
 
 
