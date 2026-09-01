@@ -139,7 +139,168 @@ layout: default
       </div>
   
       {{ content }}
-  
+
+      <script>
+        function removeEmptyRecipeSections() {
+
+          const content =
+            document.querySelector(".recipe-content");
+
+          if (!content) {
+            return;
+          }
+
+          const headings =
+            Array.from(
+              content.querySelectorAll(
+                "h2, h3, h4, h5, h6"
+              )
+            );
+
+          /*
+           * Process deepest headings first.
+           *
+           * This allows us to remove an empty child
+           * section before deciding whether its parent
+           * section contains anything.
+           */
+          headings
+            .sort(function (a, b) {
+              return headingLevel(b) -
+                     headingLevel(a);
+            })
+            .forEach(function (heading) {
+
+              if (!heading.isConnected) {
+                return;
+              }
+
+              if (sectionHasContent(heading)) {
+                return;
+              }
+
+              heading.remove();
+            });
+
+          updateRecipeJumpNav();
+        }
+
+
+        function headingLevel(heading) {
+
+          return parseInt(
+            heading.tagName.substring(1),
+            10
+          );
+
+        }
+
+
+        function sectionHasContent(heading) {
+
+          const level =
+            headingLevel(heading);
+
+          let element =
+            heading.nextElementSibling;
+
+          while (element) {
+
+            /*
+             * Stop at the next heading at the same
+             * or higher level.
+             */
+            if (
+              /^H[1-6]$/.test(
+                element.tagName
+              )
+            ) {
+
+              const nextLevel =
+                headingLevel(element);
+
+              if (nextLevel <= level) {
+                break;
+              }
+
+              /*
+               * This is a child heading.
+               *
+               * Its content will be encountered as
+               * we continue through the section.
+               */
+              element =
+                element.nextElementSibling;
+
+              continue;
+            }
+
+
+            /*
+             * Ignore elements that contain nothing
+             * meaningful.
+             */
+            if (
+              element.textContent.trim() ||
+              element.querySelector(
+                "img, table, ul, ol, blockquote, pre"
+              )
+            ) {
+
+              return true;
+
+            }
+
+            element =
+              element.nextElementSibling;
+
+          }
+
+          return false;
+
+        }
+
+
+        function updateRecipeJumpNav() {
+
+          const nav =
+            document.querySelector(
+              ".recipe-jump-nav"
+            );
+
+          if (!nav) {
+            return;
+          }
+
+          nav.querySelectorAll("a").forEach(
+            function (link) {
+
+              const targetId =
+                link.getAttribute("href");
+
+              if (
+                !targetId ||
+                targetId.charAt(0) !== "#"
+              ) {
+                return;
+              }
+
+              const target =
+                document.querySelector(
+                  targetId
+                );
+
+              link.hidden = !target;
+
+            }
+          );
+
+        }
+
+
+        removeEmptyRecipeSections();
+      </script>
+
       </div>
   
           <aside
