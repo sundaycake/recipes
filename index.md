@@ -24,43 +24,47 @@ title: Recipes
     
             <div class="recipe-index-filter-group">
                 <h2>Categories</h2>
-    
+            
                 <div class="recipe-index-filter-list">
+            
                     {% assign categories = "" | split: "" %}
-
+            
                     {% for recipe in site.recipes %}
                         {% if recipe.category %}
-                            {% unless categories contains recipe.category %}
-                                {% assign categories = categories | push: recipe.category %}
+                            {% assign category = recipe.category | first %}
+            
+                            {% unless categories contains category %}
+                                {% assign categories = categories | push: category %}
                             {% endunless %}
                         {% endif %}
                     {% endfor %}
-                    
+            
                     {% assign categories = categories | sort %}
-                    
+            
                     {% for category in categories %}
+            
                         {% assign category_count = 0 %}
-                    
+            
                         {% for recipe in site.recipes %}
-                            {% if recipe.category == category %}
+                            {% if recipe.category contains category %}
                                 {% assign category_count = category_count | plus: 1 %}
                             {% endif %}
                         {% endfor %}
-                        
+            
                         <button
                             type="button"
                             class="recipe-index-filter"
                             data-filter-type="category"
-                            data-filter-value="{{ category[0] | escape }}"
+                            data-filter-value="{{ category | escape }}"
                         >
-                            {{ category[0] }}
+                            {{ category }}
                             <span class="recipe-index-filter-count">
                                 {{ category_count }}
                             </span>
                         </button>
-                        
+            
                     {% endfor %}
-                    
+            
                 </div>
             </div>
     
