@@ -106,6 +106,24 @@
     
     }
 
+    clearSearchButton.addEventListener(
+        "click",
+        function () {
+    
+            searchInput.value = "";
+    
+            selectedIngredient = null;
+    
+            closeResults();
+    
+            updateClearSearchButton();
+    
+            updateConversion();
+    
+            searchInput.focus();
+    
+        }
+    );
     
     function formatNumber(value) {
 
@@ -313,27 +331,7 @@
         updateConversion();
 
     }
-
-
-    clearSearchButton.addEventListener(
-        "click",
-        function () {
-    
-            searchInput.value = "";
-    
-            selectedIngredient = null;
-    
-            closeResults();
-    
-            updateClearSearchButton();
-    
-            updateConversion();
-    
-            searchInput.focus();
-    
-        }
-    );
-    
+ 
     
     searchInput.addEventListener(
         "input",
