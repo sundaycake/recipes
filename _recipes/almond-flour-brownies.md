@@ -39,7 +39,8 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 - 5 tablespoons butter softened
 - 3 large eggs
 - 1 teaspoon vanilla extract
-- 1 1/2 cups granulated sugar (alternative: 1 1/2 cups brown sugar)
+- 1 cup granulated sugar
+- 1/2 cup brown sugar
 
 - Optional: 1/3 cup chocolate chips
 
