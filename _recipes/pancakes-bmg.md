@@ -3,7 +3,7 @@ recipe: Pancakes BMG
 description: Buttermilk and Multi grain version
 image: 
 
-category: breakfast
+category: Breakfast
 tags: 
 
 yield: 16 thin 6" pancakes
