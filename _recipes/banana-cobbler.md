@@ -1,13 +1,13 @@
 ---
 recipe: Banana Cobbler
-description: In the Air Fryer
+description: Enjoy this warm dessert
 image: 
 
 category: Dessert
 tags: 
   - air fryer
 
-yield: 1 8" pan
+yield: 4 servings
 default_scale: 1
 scale_notes: 
 
@@ -47,7 +47,7 @@ source_url:
 - Optional: 1 tsp lemon juice
 
 ### Chewy Oat Streusel Topping
-- ¼ cup rolled oats
+- ¼ cup (22 g) rolled oats
 - 1 Tbsp all-purpose flour
 - 1 Tbsp packed brown sugar
 - 1 Tbsp butter, melted
