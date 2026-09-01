@@ -514,6 +514,100 @@
        7. SCALING
        ================================================== */
 
+    function getAutomaticGrams(
+        parsed,
+        scale
+    ) {
+    
+        /*
+         * No usable primary measurement.
+         */
+        if (
+            !parsed.scalable ||
+            !parsed.unit
+        ) {
+            return null;
+        }
+    
+        /*
+         * If the recipe already supplied an alternate
+         * measurement, that is authoritative.
+         *
+         * Do not generate another gram value.
+         */
+        if (parsed.alternate) {
+            return null;
+        }
+    
+        /*
+         * Automatic grams are intended for volume
+         * measurements only.
+         */
+        if (
+            parsed.unit.type !== "volume"
+        ) {
+            return null;
+        }
+    
+        /*
+         * The conversion database is optional.
+         * If it isn't available, fall back to the
+         * existing recipe behavior without adding
+         * anything.
+         */
+        if (
+            !window.RecipeConversions ||
+            typeof RecipeConversions.findIngredientInText !==
+                "function"
+        ) {
+            return null;
+        }
+    
+        const ingredient =
+            RecipeConversions.findIngredientInText(
+                parsed.ingredient
+            );
+    
+        if (!ingredient) {
+            return null;
+        }
+    
+        const scaledQuantity =
+            parsed.quantity * scale;
+    
+        const grams =
+            RecipeConversions.volumeToGrams(
+                ingredient,
+                scaledQuantity,
+                parsed.unit.canonical
+            );
+    
+        /*
+         * No usable database conversion.
+         */
+        if (
+            grams === null ||
+            !Number.isFinite(grams)
+        ) {
+            return null;
+        }
+    
+        /*
+         * Don't display impractically small
+         * measurements.
+         */
+        if (grams < 1) {
+            return null;
+        }
+    
+        /*
+         * The existing recipe display convention is
+         * whole grams.
+         */
+        return Math.round(grams);
+    
+    }
+    
     function scaleIngredient(parsed, factor) {
 
         if (!parsed.scalable) {
@@ -549,13 +643,14 @@
         }
         
         if (parsed.unit) {
-        
             result += " ";
             result += parsed.unit.original;
         }
         
+        
         /*
-         * Scale the alternate measurement too.
+         * Preserve an explicitly written alternate
+         * measurement exactly as before.
          */
         if (parsed.alternate) {
         
@@ -569,12 +664,40 @@
             result += " ";
             result += parsed.alternate.unit.original;
             result += ")";
+        
         }
-
+        
+        
+        /*
+         * If the Markdown did not provide an alternate
+         * measurement, attempt to supply an automatic
+         * ingredient-specific gram conversion.
+         */
+        else {
+        
+            const automaticGrams =
+                getAutomaticGrams(
+                    parsed,
+                    factor
+                );
+        
+            if (automaticGrams !== null) {
+        
+                result +=
+                    " (" +
+                    automaticGrams +
+                    " g)";
+        
+            }
+        
+        }
+        
+        
         if (parsed.ingredient) {
-
+        
             result += " ";
             result += parsed.ingredient;
+        
         }
 
         return result;
