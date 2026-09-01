@@ -212,6 +212,52 @@
     
         return formatNumber(value);
     }
+
+
+    function formatUnit(unit, quantity, original) {
+
+        // Abbreviations are invariant.
+        if (
+            unit === "tsp" ||
+            unit === "tbsp" ||
+            unit === "g" ||
+            unit === "kg" ||
+            unit === "oz" ||
+            unit === "lb" ||
+            unit === "ml" ||
+            unit === "l" ||
+            unit === "fl oz"
+        ) {
+            return original;
+        }
+    
+        const singular = {
+            cup: "cup",
+            pint: "pint",
+            quart: "quart",
+            gallon: "gallon"
+        };
+    
+        const plural = {
+            cup: "cups",
+            pint: "pints",
+            quart: "quarts",
+            gallon: "gallons"
+        };
+    
+        if (
+            Object.prototype.hasOwnProperty.call(
+                singular,
+                unit
+            )
+        ) {
+            return Math.abs(quantity) === 1
+                ? singular[unit]
+                : plural[unit];
+        }
+    
+        return original;
+    }
     
     /* ==================================================
        4. FRACTION NORMALIZATION
@@ -617,6 +663,19 @@
         const minimum =
             parsed.quantity * factor;
 
+        const scaledQuantity =
+            parsed.quantity * factor;
+        
+        const scaledMaximum =
+            parsed.maximum !== null
+                ? parsed.maximum * factor
+                : null;
+        
+        const unitQuantity =
+            scaledMaximum !== null
+                ? scaledMaximum
+                : scaledQuantity;
+
         let result = "";
 
         if (parsed.modifier) {
@@ -624,7 +683,7 @@
         }
 
         result += formatQuantity(
-            minimum,
+            scaledQuantity,
             parsed.unit
                 ? parsed.unit.canonical
                 : null
@@ -644,7 +703,11 @@
         
         if (parsed.unit) {
             result += " ";
-            result += parsed.unit.original;
+            result += formatUnit(
+                parsed.unit.canonical,
+                unitQuantity,
+                parsed.unit.original
+            );
         }
         
         
