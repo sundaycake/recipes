@@ -7,6 +7,8 @@ category:
 tags: 
 
 yield: 
+default_scale:
+scale_notes: 
 
 prep_active: 
 prep_inactive: 
