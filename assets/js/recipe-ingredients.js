@@ -251,7 +251,7 @@
                 unit
             )
         ) {
-            return Math.abs(quantity) === 1
+            return Math.abs(quantity) <= 1
                 ? singular[unit]
                 : plural[unit];
         }
