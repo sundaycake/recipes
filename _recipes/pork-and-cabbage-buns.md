@@ -30,7 +30,7 @@ source_url:
 
 ### Buns
 
-- 420 g AP flour
+- 420 g All-purpose flour
 - 210 g water
 - 3 g (1 tsp) yeast
 - 10 g (0.75 Tbsp) sugar
