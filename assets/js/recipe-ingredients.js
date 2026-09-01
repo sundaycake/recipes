@@ -993,7 +993,6 @@ document.addEventListener(
          */
 
         function renderIngredients(scale) {
-
             ingredients.forEach(function (entry) {
         
                 if (!entry.parsed.scalable) {
@@ -1011,11 +1010,80 @@ document.addEventListener(
                     );
         
                 entry.element.textContent =
-                    entry.prefix +
-                    scaled;
+                    entry.prefix;
+        
+                if (!scaled.automaticGrams) {
+        
+                    entry.element.append(
+                        scaled.text
+                    );
+        
+                    return;
+                }
+        
+                /*
+                 * Split the generated text at the automatic
+                 * gram value so it can be styled independently.
+                 */
+                const gramMatch =
+                    scaled.text.match(
+                        /(\(\s*\d+\s+g\s*\))/
+                    );
+        
+                if (!gramMatch) {
+        
+                    entry.element.append(
+                        scaled.text
+                    );
+        
+                    return;
+                }
+        
+                const before =
+                    scaled.text.slice(
+                        0,
+                        gramMatch.index
+                    );
+        
+                const after =
+                    scaled.text.slice(
+                        gramMatch.index +
+                        gramMatch[0].length
+                    );
+        
+                entry.element.append(
+                    before
+                );
+        
+                const grams =
+                    document.createElement("span");
+        
+                grams.className =
+                    "ingredient-grams-calculated";
+        
+                grams.textContent =
+                    gramMatch[0];
+        
+                grams.setAttribute(
+                    "title",
+                    "Calculated from ingredient conversion data"
+                );
+        
+                grams.setAttribute(
+                    "aria-label",
+                    gramMatch[0] +
+                    ", calculated from ingredient conversion data"
+                );
+        
+                entry.element.append(
+                    grams
+                );
+        
+                entry.element.append(
+                    after
+                );
         
             });
-        
         }
 
 
