@@ -3,7 +3,7 @@ recipe: Boba in Instant Pot
 description: Cooking boba pearls
 image: 
 
-category: drinks
+category: Dessert
 tags: 
   - instant pot
 
