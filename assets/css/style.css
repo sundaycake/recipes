@@ -536,6 +536,108 @@ a:hover {
 
 
 /* --------------------------------------------------
+   Recipe index filters
+   -------------------------------------------------- */
+
+.recipe-index-filters {
+    margin-top: 2rem;
+}
+
+
+.recipe-index-filter-group {
+    margin-bottom: 1.5rem;
+}
+
+
+.recipe-index-filter-group h2 {
+    margin: 0 0 0.6rem;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+.recipe-index-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.4rem;
+}
+
+
+.recipe-index-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    padding: 0.35rem 0.6rem;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: var(--card-background);
+    color: var(--text);
+
+    font: inherit;
+    font-size: 0.85rem;
+
+    cursor: pointer;
+}
+
+
+.recipe-index-filter:hover {
+    background: #faf9f7;
+}
+
+
+.recipe-index-filter.is-active {
+    border-color: var(--accent);
+
+    background: var(--accent);
+    color: #ffffff;
+}
+
+
+.recipe-index-filter-count {
+    color: var(--muted);
+
+    font-size: 0.75rem;
+}
+
+
+.recipe-index-filter.is-active
+.recipe-index-filter-count {
+    color: #ffffff;
+}
+
+
+.recipe-index-filter-clear {
+    margin-top: 0.25rem;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--accent);
+
+    font: inherit;
+    font-size: 0.85rem;
+
+    cursor: pointer;
+}
+
+
+.recipe-index-filter-clear:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------
    Recipe jump navigation
    -------------------------------------------------- */
 
