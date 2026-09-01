@@ -30,18 +30,18 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 ## Ingredients
 
 ### Dry
-- 1 1/2 cups (150 g) almond flour
-- 3/4 cup (64 g) cocoa powder
+- 1 1/2 cups almond flour
+- 3/4 cup cocoa powder
 - 1 teaspoon baking powder
 - 1/2 teaspoon salt
 
 ### Wet
-- 5 tablespoons (70 g) butter softened
+- 5 tablespoons butter softened
 - 3 large eggs
 - 1 teaspoon vanilla extract
-- 1 1/2 cups (280 g) granulated or brown sugar (see Tips)
+- 1 1/2 cups granulated or brown sugar (see Tips)
 
-- Optional: 1/3 cup (115 g) chocolate chips, optional
+- Optional: 1/3 cup chocolate chips
 
 ## Instructions
 
