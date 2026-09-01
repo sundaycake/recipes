@@ -30,20 +30,20 @@ source_url: https://sugarspunrun.com/buttermilk-pancakes/
 - 30 g flax seed meal 
 - 170 g all-purpose flour
 > OR
-- 2 cups (250 g) all-purpose flour
+- 2 cups all-purpose flour
 
 ### Dry
-3 Tbsp sugar
-1.5 tsp baking powder
-1 tsp baking soda
-½ tsp salt
+- 3 Tbsp sugar
+- 1.5 tsp baking powder
+- 1 tsp baking soda
+- ½ tsp salt
 
 ### Wet
 
-2-2 ¼ cups buttermilk (530 ml)
-2 large eggs lightly beaten, room temperature preferred
-1 tsp vanilla extract
-4 Tbsp (57 g) unsalted butter melted and cooled
+- 2 cups buttermilk
+- 2 large eggs lightly beaten, room temperature preferred
+- 1 tsp vanilla extract
+- 4 Tbsp unsalted butter, melted and cooled
 
 ## Instructions
 
