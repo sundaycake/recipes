@@ -239,6 +239,26 @@ body {
 }
 
 /* --------------------------------------------------
+   Recipe content (Automatically calculated ingredient measurements)
+   -------------------------------------------------- */
+
+.ingredient-grams-calculated {
+    color: var(--muted);
+
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+
+    cursor: help;
+}
+
+.ingredient-grams-calculated:hover,
+.ingredient-grams-calculated:focus {
+    color: var(--text);
+}
+
+/* --------------------------------------------------
    Instructions
    -------------------------------------------------- */
 
