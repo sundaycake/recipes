@@ -140,7 +140,133 @@ layout: default
   
       {{ content }}
   
+      </div>
+  
+          <aside
+          class="ingredient-converter"
+          aria-label="Ingredient converter"
+      >
+          <h2>Ingredient Converter</h2>
+      
+          <div class="ingredient-converter-field">
+              <label for="ingredient-converter-search">
+                  Ingredient
+              </label>
+      
+              <div class="ingredient-converter-search">
+                  <input
+                      id="ingredient-converter-search"
+                      type="text"
+                      autocomplete="off"
+                      placeholder="Search ingredients..."
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-controls="ingredient-converter-results"
+                  >
+      
+                  <div
+                      id="ingredient-converter-results"
+                      class="ingredient-converter-results"
+                      role="listbox"
+                      hidden
+                  ></div>
+              </div>
+          </div>
+      
+          <div class="ingredient-converter-row">
+      
+              <div class="ingredient-converter-field">
+                  <label for="ingredient-converter-amount">
+                      Amount
+                  </label>
+      
+                  <input
+                      id="ingredient-converter-amount"
+                      type="number"
+                      min="0"
+                      step="any"
+                      value="1"
+                  >
+              </div>
+      
+              <div class="ingredient-converter-field">
+                  <label for="ingredient-converter-from">
+                      From
+                  </label>
+      
+                  <select id="ingredient-converter-from">
+                      <option value="tsp">teaspoons</option>
+                      <option value="tbsp">tablespoons</option>
+                      <option value="cup" selected>cups</option>
+                      <option value="fl oz">fluid ounces</option>
+                      <option value="pint">pints</option>
+                      <option value="quart">quarts</option>
+                      <option value="gallon">gallons</option>
+                      <option value="g">grams</option>
+                      <option value="kg">kilograms</option>
+                      <option value="oz">ounces</option>
+                      <option value="lb">pounds</option>
+                  </select>
+              </div>
+      
+          </div>
+      
+          <button
+              type="button"
+              class="ingredient-converter-swap"
+              aria-label="Swap conversion direction"
+              title="Swap conversion direction"
+          >
+              ⇅
+          </button>
+      
+          <div class="ingredient-converter-row">
+      
+              <div class="ingredient-converter-field">
+                  <label for="ingredient-converter-result">
+                      Result
+                  </label>
+      
+                  <input
+                      id="ingredient-converter-result"
+                      type="text"
+                      readonly
+                      aria-live="polite"
+                  >
+              </div>
+      
+              <div class="ingredient-converter-field">
+                  <label for="ingredient-converter-to">
+                      To
+                  </label>
+      
+                  <select id="ingredient-converter-to">
+                      <option value="g" selected>grams</option>
+                      <option value="kg">kilograms</option>
+                      <option value="oz">ounces</option>
+                      <option value="lb">pounds</option>
+                      <option value="tsp">teaspoons</option>
+                      <option value="tbsp">tablespoons</option>
+                      <option value="cup">cups</option>
+                      <option value="fl oz">fluid ounces</option>
+                      <option value="pint">pints</option>
+                      <option value="quart">quarts</option>
+                      <option value="gallon">gallons</option>
+                  </select>
+              </div>
+      
+          </div>
+      
+          <div
+              class="ingredient-converter-info"
+              aria-live="polite"
+          ></div>
+      
+      </aside>
     </div>
+  
+  </article>
+
   
   
     {% if page.source %}
@@ -167,127 +293,3 @@ layout: default
   
     {% endif %}
   
-    <aside
-        class="ingredient-converter"
-        aria-label="Ingredient converter"
-    >
-        <h2>Ingredient Converter</h2>
-    
-        <div class="ingredient-converter-field">
-            <label for="ingredient-converter-search">
-                Ingredient
-            </label>
-    
-            <div class="ingredient-converter-search">
-                <input
-                    id="ingredient-converter-search"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="Search ingredients..."
-                    role="combobox"
-                    aria-expanded="false"
-                    aria-controls="ingredient-converter-results"
-                >
-    
-                <div
-                    id="ingredient-converter-results"
-                    class="ingredient-converter-results"
-                    role="listbox"
-                    hidden
-                ></div>
-            </div>
-        </div>
-    
-        <div class="ingredient-converter-row">
-    
-            <div class="ingredient-converter-field">
-                <label for="ingredient-converter-amount">
-                    Amount
-                </label>
-    
-                <input
-                    id="ingredient-converter-amount"
-                    type="number"
-                    min="0"
-                    step="any"
-                    value="1"
-                >
-            </div>
-    
-            <div class="ingredient-converter-field">
-                <label for="ingredient-converter-from">
-                    From
-                </label>
-    
-                <select id="ingredient-converter-from">
-                    <option value="tsp">teaspoons</option>
-                    <option value="tbsp">tablespoons</option>
-                    <option value="cup" selected>cups</option>
-                    <option value="fl oz">fluid ounces</option>
-                    <option value="pint">pints</option>
-                    <option value="quart">quarts</option>
-                    <option value="gallon">gallons</option>
-                    <option value="g">grams</option>
-                    <option value="kg">kilograms</option>
-                    <option value="oz">ounces</option>
-                    <option value="lb">pounds</option>
-                </select>
-            </div>
-    
-        </div>
-    
-        <button
-            type="button"
-            class="ingredient-converter-swap"
-            aria-label="Swap conversion direction"
-            title="Swap conversion direction"
-        >
-            ⇅
-        </button>
-    
-        <div class="ingredient-converter-row">
-    
-            <div class="ingredient-converter-field">
-                <label for="ingredient-converter-result">
-                    Result
-                </label>
-    
-                <input
-                    id="ingredient-converter-result"
-                    type="text"
-                    readonly
-                    aria-live="polite"
-                >
-            </div>
-    
-            <div class="ingredient-converter-field">
-                <label for="ingredient-converter-to">
-                    To
-                </label>
-    
-                <select id="ingredient-converter-to">
-                    <option value="g" selected>grams</option>
-                    <option value="kg">kilograms</option>
-                    <option value="oz">ounces</option>
-                    <option value="lb">pounds</option>
-                    <option value="tsp">teaspoons</option>
-                    <option value="tbsp">tablespoons</option>
-                    <option value="cup">cups</option>
-                    <option value="fl oz">fluid ounces</option>
-                    <option value="pint">pints</option>
-                    <option value="quart">quarts</option>
-                    <option value="gallon">gallons</option>
-                </select>
-            </div>
-    
-        </div>
-    
-        <div
-            class="ingredient-converter-info"
-            aria-live="polite"
-        ></div>
-    
-    </aside>
-  </div>
-
-</article>
