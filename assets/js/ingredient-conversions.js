@@ -241,6 +241,93 @@
     }
 
 
+    function findIngredientInText(text) {
+
+        initialize();
+    
+        const normalized =
+            normalizeText(text);
+    
+        if (!normalized) {
+            return null;
+        }
+    
+        /*
+         * First try an exact match.
+         */
+        const exact =
+            lookup.get(normalized);
+    
+        if (exact) {
+            return exact;
+        }
+    
+        /*
+         * Then look for the longest canonical name or
+         * alias at the beginning of the ingredient text.
+         *
+         * Longest match wins so that, for example,
+         * "brown sugar (packed)" is preferred over
+         * "brown sugar".
+         */
+        const candidates = [];
+    
+        database.forEach(function (ingredient) {
+    
+            if (!ingredient || !ingredient.name) {
+                return;
+            }
+    
+            candidates.push({
+                text: normalizeText(ingredient.name),
+                ingredient
+            });
+    
+            if (Array.isArray(ingredient.aliases)) {
+    
+                ingredient.aliases.forEach(function (alias) {
+    
+                    candidates.push({
+                        text: normalizeText(alias),
+                        ingredient
+                    });
+    
+                });
+    
+            }
+    
+        });
+    
+        candidates.sort(function (a, b) {
+            return b.text.length - a.text.length;
+        });
+    
+        for (const candidate of candidates) {
+    
+            if (
+                normalized === candidate.text ||
+                normalized.startsWith(
+                    candidate.text + " "
+                ) ||
+                normalized.startsWith(
+                    candidate.text + ","
+                ) ||
+                normalized.startsWith(
+                    candidate.text + "("
+                )
+            ) {
+    
+                return candidate.ingredient;
+    
+            }
+    
+        }
+    
+        return null;
+    
+    }
+
+
     function searchIngredients(query) {
 
         initialize();
