@@ -35,8 +35,8 @@ source_url: https://www.tablefortwoblog.com/chinese-new-year-almond-cookies/
 - Pinch of kosher salt
 - 1 egg
 - 1 teaspoon almond extract
-- 1 ¾ cup (219 g) all-purpose flour
-- 1 cup (200 g) + 2 tablespoons granulated sugar
+- 1 ¾ cup all-purpose flour
+- 1 cup granulated sugar
 - ½ teaspoon baking soda
 - Sliced almonds
 
