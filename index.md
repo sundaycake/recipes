@@ -26,9 +26,27 @@ title: Recipes
                 <h2>Categories</h2>
     
                 <div class="recipe-index-filter-list">
-                    {% assign categories = site.categories | sort %}
-    
+                    {% assign categories = "" | split: "" %}
+
+                    {% for recipe in site.recipes %}
+                        {% if recipe.category %}
+                            {% unless categories contains recipe.category %}
+                                {% assign categories = categories | push: recipe.category %}
+                            {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% assign categories = categories | sort %}
+                    
                     {% for category in categories %}
+                        {% assign category_count = 0 %}
+                    
+                        {% for recipe in site.recipes %}
+                            {% if recipe.category == category %}
+                                {% assign category_count = category_count | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        
                         <button
                             type="button"
                             class="recipe-index-filter"
@@ -37,32 +55,56 @@ title: Recipes
                         >
                             {{ category[0] }}
                             <span class="recipe-index-filter-count">
-                                {{ category[1].size }}
+                                {{ category_count }}
                             </span>
                         </button>
+                        
                     {% endfor %}
+                    
                 </div>
             </div>
     
             <div class="recipe-index-filter-group">
                 <h2>Tags</h2>
-    
+            
                 <div class="recipe-index-filter-list">
-                    {% assign tags = site.tags | sort %}
-    
+            
+                    {% assign tags = "" | split: "" %}
+            
+                    {% for recipe in site.recipes %}
+                        {% for tag in recipe.tags %}
+                            {% unless tags contains tag %}
+                                {% assign tags = tags | push: tag %}
+                            {% endunless %}
+                        {% endfor %}
+                    {% endfor %}
+            
+                    {% assign tags = tags | sort %}
+            
                     {% for tag in tags %}
+            
+                        {% assign tag_count = 0 %}
+            
+                        {% for recipe in site.recipes %}
+                            {% if recipe.tags contains tag %}
+                                {% assign tag_count = tag_count | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+            
                         <button
                             type="button"
                             class="recipe-index-filter"
                             data-filter-type="tag"
-                            data-filter-value="{{ tag[0] | escape }}"
+                            data-filter-value="{{ tag | escape }}"
                         >
-                            {{ tag[0] }}
+                            {{ tag }}
                             <span class="recipe-index-filter-count">
-                                {{ tag[1].size }}
+                                {{ tag_count }}
                             </span>
                         </button>
+            
                     {% endfor %}
+            
                 </div>
             </div>
     
