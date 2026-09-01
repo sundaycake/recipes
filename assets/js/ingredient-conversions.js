@@ -829,6 +829,8 @@
 
         findIngredient,
 
+        findIngredientInText,
+
         searchIngredients,
 
         convert,
