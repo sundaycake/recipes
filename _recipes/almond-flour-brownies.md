@@ -60,6 +60,8 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 
 ## Notes
 
+> This recipe is even better the next day.
+
 ## Tips
 
 * Brown sugar makes brownie more chewy. Granulated sugar is slightly better for whisking and shiny top
