@@ -460,7 +460,8 @@
             ) {
 
                 clearSearch();
-                closeResults();
+                /* closeResults(); */
+                showResults();
 
             }
 
