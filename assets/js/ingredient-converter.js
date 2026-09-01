@@ -72,10 +72,41 @@
 
     /*
      * --------------------------------------------------
+     * Clear search button
+     * --------------------------------------------------
+     */
+    
+    const clearSearchButton =
+        document.createElement("button");
+    
+    clearSearchButton.type = "button";
+    clearSearchButton.className =
+        "ingredient-converter-search-clear";
+    clearSearchButton.setAttribute(
+        "aria-label",
+        "Clear ingredient search"
+    );
+    clearSearchButton.textContent = "×";
+    clearSearchButton.hidden = true;
+    
+    searchInput.parentElement.appendChild(
+        clearSearchButton
+    );
+
+    /*
+     * --------------------------------------------------
      * Helpers
      * --------------------------------------------------
      */
 
+    function updateClearSearchButton() {
+
+        clearSearchButton.hidden =
+            searchInput.value.trim() === "";
+    
+    }
+
+    
     function formatNumber(value) {
 
         if (!Number.isFinite(value)) {
@@ -147,6 +178,16 @@
         const matches =
             RecipeConversions.searchIngredients(
                 query
+            ).slice().sort(
+                function (a, b) {
+                    return a.name.localeCompare(
+                        b.name,
+                        undefined,
+                        {
+                            sensitivity: "base"
+                        }
+                    );
+                }
             );
 
 
@@ -262,24 +303,45 @@
         selectedIngredient =
             ingredient;
 
-
         searchInput.value =
             ingredient.name;
 
+        updateClearSearchButton();
 
         closeResults();
-
 
         updateConversion();
 
     }
 
 
+    clearSearchButton.addEventListener(
+        "click",
+        function () {
+    
+            searchInput.value = "";
+    
+            selectedIngredient = null;
+    
+            closeResults();
+    
+            updateClearSearchButton();
+    
+            updateConversion();
+    
+            searchInput.focus();
+    
+        }
+    );
+    
+    
     searchInput.addEventListener(
         "input",
         function () {
 
             selectedIngredient = null;
+
+            updateClearSearchButton();
 
             showResults();
 
