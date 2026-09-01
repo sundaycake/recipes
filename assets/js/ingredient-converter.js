@@ -99,6 +99,18 @@
      * --------------------------------------------------
      */
 
+    function clearSearch() {
+        searchInput.value = "";
+        selectedIngredient = null;
+    
+        closeResults();
+        updateClearSearchButton();
+        updateConversion();
+    
+        searchInput.focus();
+    }
+
+    
     function updateClearSearchButton() {
 
         clearSearchButton.hidden =
@@ -447,6 +459,7 @@
                 event.key === "Escape"
             ) {
 
+                clearSearch();
                 closeResults();
 
             }
