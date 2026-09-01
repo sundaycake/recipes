@@ -736,31 +736,33 @@
          * measurement, attempt to supply an automatic
          * ingredient-specific gram conversion.
          */
-        else {
-        
-            const automaticGrams =
+        let automaticGrams = null;
+
+        if (!parsed.alternate) {
+
+            automaticGrams =
                 getAutomaticGrams(
                     parsed,
                     factor
                 );
-        
+
             if (automaticGrams !== null) {
-        
+
                 result +=
                     " (" +
                     automaticGrams +
                     " g)";
-        
+
             }
-        
+
         }
-        
-        
+
+
         if (parsed.ingredient) {
-        
+
             result += " ";
             result += parsed.ingredient;
-        
+
         }
 
         return {
