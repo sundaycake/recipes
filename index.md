@@ -7,11 +7,11 @@ title: Recipes
 
     <header class="recipe-index-header">
         <h1>Recipes</h1>
-
+    
         <label class="recipe-search-label" for="recipe-search">
             Search recipes
         </label>
-
+    
         <input
             id="recipe-search"
             class="recipe-search"
@@ -19,6 +19,62 @@ title: Recipes
             placeholder="Search recipes..."
             autocomplete="off"
         >
+    
+        <div class="recipe-index-filters">
+    
+            <div class="recipe-index-filter-group">
+                <h2>Categories</h2>
+    
+                <div class="recipe-index-filter-list">
+                    {% assign categories = site.categories | sort %}
+    
+                    {% for category in categories %}
+                        <button
+                            type="button"
+                            class="recipe-index-filter"
+                            data-filter-type="category"
+                            data-filter-value="{{ category[0] | escape }}"
+                        >
+                            {{ category[0] }}
+                            <span class="recipe-index-filter-count">
+                                {{ category[1].size }}
+                            </span>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <div class="recipe-index-filter-group">
+                <h2>Tags</h2>
+    
+                <div class="recipe-index-filter-list">
+                    {% assign tags = site.tags | sort %}
+    
+                    {% for tag in tags %}
+                        <button
+                            type="button"
+                            class="recipe-index-filter"
+                            data-filter-type="tag"
+                            data-filter-value="{{ tag[0] | escape }}"
+                        >
+                            {{ tag[0] }}
+                            <span class="recipe-index-filter-count">
+                                {{ tag[1].size }}
+                            </span>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <button
+                type="button"
+                id="recipe-filter-clear"
+                class="recipe-index-filter-clear"
+                hidden
+            >
+                Clear filter
+            </button>
+        </div>
     </header>
 
 
