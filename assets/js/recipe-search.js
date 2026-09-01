@@ -1,21 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const searchInput = document.getElementById("recipe-search");
-    const recipeItems = document.querySelectorAll(".recipe-index-item");
-    const categories = document.querySelectorAll(".recipe-index-category");
-    const noResults = document.getElementById("no-results");
+    const searchInput =
+        document.getElementById("recipe-search");
+
+    const recipeItems =
+        document.querySelectorAll(
+            ".recipe-index-item"
+        );
+
+    const categories =
+        document.querySelectorAll(
+            ".recipe-index-category"
+        );
+
+    const filterButtons =
+        document.querySelectorAll(
+            ".recipe-index-filter"
+        );
+
+    const clearFilterButton =
+        document.getElementById(
+            "recipe-filter-clear"
+        );
+
+    const noResults =
+        document.getElementById("no-results");
 
     if (!searchInput) {
         return;
     }
 
-    searchInput.addEventListener("input", function () {
 
-        const query = searchInput.value
-            .trim()
-            .toLowerCase();
+    let activeFilterType = null;
+    let activeFilterValue = null;
+
+
+    function applyFilters() {
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
 
         let visibleRecipes = 0;
+
 
         recipeItems.forEach(function (item) {
 
@@ -29,16 +57,55 @@ document.addEventListener("DOMContentLoaded", function () {
                 .join(" ")
                 .toLowerCase();
 
-            const matches =
+
+            const matchesSearch =
                 query === "" ||
                 searchableText.includes(query);
 
-            item.classList.toggle("is-hidden", !matches);
 
-            if (matches) {
+            let matchesFilter = true;
+
+
+            if (activeFilterType === "category") {
+
+                matchesFilter =
+                    item.dataset.category ===
+                    activeFilterValue;
+
+            }
+
+
+            if (activeFilterType === "tag") {
+
+                const tags =
+                    (item.dataset.tags || "")
+                        .split(" ")
+                        .filter(Boolean);
+
+                matchesFilter =
+                    tags.includes(
+                        activeFilterValue
+                    );
+            }
+
+
+            const visible =
+                matchesSearch &&
+                matchesFilter;
+
+
+            item.classList.toggle(
+                "is-hidden",
+                !visible
+            );
+
+
+            if (visible) {
                 visibleRecipes++;
             }
+
         });
+
 
         categories.forEach(function (category) {
 
@@ -51,12 +118,103 @@ document.addEventListener("DOMContentLoaded", function () {
                 "is-hidden",
                 visibleItems.length === 0
             );
+
         });
+
 
         noResults.classList.toggle(
             "is-hidden",
             visibleRecipes !== 0
         );
-    });
+
+
+        filterButtons.forEach(
+            function (button) {
+
+                const active =
+                    button.dataset.filterType ===
+                        activeFilterType &&
+                    button.dataset.filterValue ===
+                        activeFilterValue;
+
+                button.classList.toggle(
+                    "is-active",
+                    active
+                );
+
+            }
+        );
+
+
+        clearFilterButton.hidden =
+            activeFilterType === null;
+
+    }
+
+
+    filterButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const type =
+                        button.dataset.filterType;
+
+                    const value =
+                        button.dataset.filterValue;
+
+
+                    /*
+                     * Clicking the active filter
+                     * again clears it.
+                     */
+                    if (
+                        activeFilterType === type &&
+                        activeFilterValue === value
+                    ) {
+                        activeFilterType = null;
+                        activeFilterValue = null;
+
+                    } else {
+
+                        activeFilterType = type;
+                        activeFilterValue = value;
+
+                    }
+
+
+                    applyFilters();
+
+                }
+            );
+
+        }
+    );
+
+
+    clearFilterButton.addEventListener(
+        "click",
+        function () {
+
+            activeFilterType = null;
+            activeFilterValue = null;
+
+            applyFilters();
+
+        }
+    );
+
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+            applyFilters();
+        }
+    );
+
+
+    applyFilters();
 
 });
