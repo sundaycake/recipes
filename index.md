@@ -79,9 +79,17 @@ title: Recipes
             
                     {% for recipe in site.recipes %}
                         {% for tag in recipe.tags %}
-                            {% unless tags contains tag %}
-                                {% assign tags = tags | push: tag %}
+            
+                            {% assign normalized_tag =
+                                tag | strip | downcase
+                            %}
+            
+                            {% unless tags contains normalized_tag %}
+                                {% assign tags =
+                                    tags | push: normalized_tag
+                                %}
                             {% endunless %}
+            
                         {% endfor %}
                     {% endfor %}
             
@@ -92,9 +100,20 @@ title: Recipes
                         {% assign tag_count = 0 %}
             
                         {% for recipe in site.recipes %}
-                            {% if recipe.tags contains tag %}
-                                {% assign tag_count = tag_count | plus: 1 %}
-                            {% endif %}
+                            {% for recipe_tag in recipe.tags %}
+            
+                                {% assign normalized_recipe_tag =
+                                    recipe_tag | strip | downcase
+                                %}
+            
+                                {% if normalized_recipe_tag == tag %}
+                                    {% assign tag_count =
+                                        tag_count | plus: 1
+                                    %}
+                                    {% break %}
+                                {% endif %}
+            
+                            {% endfor %}
                         {% endfor %}
             
                         <button
@@ -103,7 +122,7 @@ title: Recipes
                             data-filter-type="tag"
                             data-filter-value="{{ tag | escape }}"
                         >
-                            {{ tag }}
+                            {{ tag | capitalize }}
                             <span class="recipe-index-filter-count">
                                 {{ tag_count }}
                             </span>
