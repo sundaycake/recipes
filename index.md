@@ -30,9 +30,9 @@ title: Recipes
                     {% assign categories = "" | split: "" %}
             
                     {% for recipe in site.recipes %}
-                        {% if recipe.category %}
-                            {% assign category = recipe.category | first %}
+                        {% assign category = recipe.category | strip %}
             
+                        {% if category != "" %}
                             {% unless categories contains category %}
                                 {% assign categories = categories | push: category %}
                             {% endunless %}
@@ -46,7 +46,9 @@ title: Recipes
                         {% assign category_count = 0 %}
             
                         {% for recipe in site.recipes %}
-                            {% if recipe.category contains category %}
+                            {% assign recipe_category = recipe.category | strip %}
+            
+                            {% if recipe_category == category %}
                                 {% assign category_count = category_count | plus: 1 %}
                             {% endif %}
                         {% endfor %}
