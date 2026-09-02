@@ -72,4 +72,11 @@ reduced sugar, reduced salt, and a different baking method.
 
 ## Revision History
 
+- 08/11/2021 - Initial version
+- 07/05/2023 - Andrew updated
+- 04/06/2024 - Andrew updated
+- 08/10/2024 - Andrew updated
+- 01/24/2026 - Andrew updated
+- 06/22/2025 - Andrew updated
+- 08/24/2026 - Nathan updated
 
