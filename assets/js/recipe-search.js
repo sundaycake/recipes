@@ -89,8 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 matchesFilter =
                     tags.some(function (tag) {
-                        return tag.trim().toLowerCase() ===
-                            activeFilterValue.trim().toLowerCase();
+            
+                        return tag
+                            .trim()
+                            .toLowerCase() ===
+                            activeFilterValue;
+                        
                     });
             }
 
