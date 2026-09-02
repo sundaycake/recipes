@@ -75,42 +75,62 @@ title: Recipes
             
                 <div class="recipe-index-filter-list">
             
-                    {% assign tags = "" | split: "" %}
+                    {% assign normalized_tags = "" | split: "" %}
+                    {% assign display_tags = "" | split: "" %}
             
                     {% for recipe in site.recipes %}
                         {% for tag in recipe.tags %}
             
-                            {% assign normalized_tag =
-                                tag | strip | downcase
-                            %}
+                            {% assign clean_tag = tag | strip %}
+                            {% assign normalized_tag = clean_tag | downcase %}
             
-                            {% unless tags contains normalized_tag %}
-                                {% assign tags =
-                                    tags | push: normalized_tag
+                            {% unless normalized_tags contains normalized_tag %}
+            
+                                {% assign normalized_tags =
+                                    normalized_tags | push: normalized_tag
                                 %}
+            
+                                {% assign display_tags =
+                                    display_tags | push: clean_tag
+                                %}
+            
                             {% endunless %}
             
                         {% endfor %}
                     {% endfor %}
             
-                    {% assign tags = tags | sort %}
+                    {% assign normalized_tags =
+                        normalized_tags | sort
+                    %}
             
-                    {% for tag in tags %}
+                    {% for normalized_tag in normalized_tags %}
             
                         {% assign tag_count = 0 %}
+                        {% assign display_tag = normalized_tag %}
             
                         {% for recipe in site.recipes %}
                             {% for recipe_tag in recipe.tags %}
             
-                                {% assign normalized_recipe_tag =
-                                    recipe_tag | strip | downcase
+                                {% assign clean_recipe_tag =
+                                    recipe_tag | strip
                                 %}
             
-                                {% if normalized_recipe_tag == tag %}
+                                {% assign normalized_recipe_tag =
+                                    clean_recipe_tag | downcase
+                                %}
+            
+                                {% if normalized_recipe_tag == normalized_tag %}
+            
                                     {% assign tag_count =
                                         tag_count | plus: 1
                                     %}
+            
+                                    {% assign display_tag =
+                                        clean_recipe_tag
+                                    %}
+            
                                     {% break %}
+            
                                 {% endif %}
             
                             {% endfor %}
@@ -120,9 +140,9 @@ title: Recipes
                             type="button"
                             class="recipe-index-filter"
                             data-filter-type="tag"
-                            data-filter-value="{{ tag | escape }}"
+                            data-filter-value="{{ normalized_tag | escape }}"
                         >
-                            {{ tag | capitalize }}
+                            {{ display_tag }}
                             <span class="recipe-index-filter-count">
                                 {{ tag_count }}
                             </span>
@@ -172,7 +192,7 @@ title: Recipes
                         data-recipe="{{ recipe.recipe | escape }}"
                         data-description="{{ recipe.description | escape }}"
                         data-category="{{ recipe.category | escape }}"
-                        data-tags="{{ recipe.tags | join: ' ' | escape }}"
+                        data-tags="{{ recipe.tags | jsonify | escape }}"
                     >
 
                             <div class="recipe-index-name">
