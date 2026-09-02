@@ -77,15 +77,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (activeFilterType === "tag") {
 
-                const tags =
-                    (item.dataset.tags || "")
-                        .split(" ")
-                        .filter(Boolean);
+                let tags = [];
 
-                matchesFilter =
-                    tags.includes(
-                        activeFilterValue
+                try {
+                    tags = JSON.parse(
+                        item.dataset.tags || "[]"
                     );
+                } catch (error) {
+                    tags = [];
+                }
+                
+                matchesFilter =
+                    tags.some(function (tag) {
+                        return tag.trim().toLowerCase() ===
+                            activeFilterValue.trim().toLowerCase();
+                    });
             }
 
 
