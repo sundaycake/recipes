@@ -1112,16 +1112,16 @@ a:hover {
    -------------------------------------------------- */
 
 .recipe-scaling {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem;
     margin-bottom: 1.5rem;
 }
 
-.recipe-scaling-label {
-    margin-right: 0.25rem;
+.recipe-scaling > button,
+.recipe-scaling > .recipe-scaling-label {
+    display: inline-block;
+    margin-right: 0.4rem;
+}
 
+.recipe-scaling-label {
     color: var(--muted);
     font-size: 0.8rem;
     font-weight: 600;
@@ -1156,4 +1156,9 @@ a:hover {
 .recipe-scaling button:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+}
+
+.scale-notes {
+    display: block;
+    margin-top: 0.5rem;
 }
