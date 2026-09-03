@@ -42,6 +42,32 @@ layout: default
 
   <dl class="recipe-meta">
 
+    {% if page.cook_method %}
+    <div class="recipe-meta-item">
+      <dt>Method</dt>
+      <dd>{{ page.cook_method | capitalize }}</dd>
+    </div>
+    {% endif %}
+
+    {% if page.cook_temp %}
+    <div class="recipe-meta-item">
+      <dt>Temperature</dt>
+        <dd
+          data-temperature="{{ page.cook_temp | escape }}"
+      >
+          {{ page.cook_temp }}
+      </dd>
+
+    </div>
+    {% endif %}
+
+    {% if page.yield %}
+    <div class="recipe-meta-item">
+      <dt>Yield</dt>
+      <dd id="recipe-yield" data-original-yield="{{ page.yield | escape }}">{{ page.yield }}</dd>
+    </div>
+    {% endif %}
+    
     {% if page.prep_active %}
     <div class="recipe-meta-item">
       <dt>Active Prep</dt>
@@ -60,32 +86,6 @@ layout: default
     <div class="recipe-meta-item">
       <dt>Cook Time</dt>
       <dd>{{ page.cook_time }}</dd>
-    </div>
-    {% endif %}
-
-    {% if page.yield %}
-    <div class="recipe-meta-item">
-      <dt>Yield</dt>
-      <dd id="recipe-yield" data-original-yield="{{ page.yield | escape }}">{{ page.yield }}</dd>
-    </div>
-    {% endif %}
-
-    {% if page.cook_temp %}
-    <div class="recipe-meta-item">
-      <dt>Temperature</dt>
-        <dd
-          data-temperature="{{ page.cook_temp | escape }}"
-      >
-          {{ page.cook_temp }}
-      </dd>
-
-    </div>
-    {% endif %}
-
-    {% if page.cook_method %}
-    <div class="recipe-meta-item">
-      <dt>Method</dt>
-      <dd>{{ page.cook_method | capitalize }}</dd>
     </div>
     {% endif %}
 
