@@ -31,10 +31,10 @@ source_url: https://www.thewholesomedish.com/the-best-classic-chili/
 - 1 tablespoon brown sugar
 - 1 cup water, broth, or beer
 - 2 tablespoons tomato paste
-- 1 (15 oz) can diced tomatoes
-- 1 (16 oz) can red kidney beans, drained and rinsed
-- 1 (16 oz) can pinto beans
-- 1 (16 oz) can chickpeas
+- 1 can diced tomatoes (15 oz)
+- 1 can red kidney beans, drained and rinsed (16 oz)
+- 1 can pinto beans (16 oz)
+- 1 can chickpeas (16 oz) 
 
 ### Seasoning
 - 2 tablespoons chili powder
