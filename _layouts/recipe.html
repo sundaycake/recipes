@@ -73,7 +73,12 @@ layout: default
     {% if page.cook_temp %}
     <div class="recipe-meta-item">
       <dt>Temperature</dt>
-      <dd>{{ page.cook_temp }}</dd>
+        <dd
+          data-temperature="{{ page.cook_temp | escape }}"
+      >
+          {{ page.cook_temp }}
+      </dd>
+
     </div>
     {% endif %}
 
