@@ -10,6 +10,8 @@ tags:
 yield: 8 servings
 default_scale: 1
 scale_notes: 
+  - "1.0 | Use one cast iron pan"
+  - "2.0 | Use two cast iron pans"
 
 prep_active: 10 minutes
 prep_inactive: 
@@ -22,9 +24,6 @@ source: Allrecipes
 source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 ---
 
-## Equipment
-- 8" cast iron pan
-
 ## Ingredients
 
 ### Dry ingredients
@@ -32,13 +31,10 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 - 1 cup flour
 - 1 overflowing cup (170 g) cornmeal
 - 1/2 cup sugar
+- 1 tsp salt
 - Leavening (choose one):
   1. 3 1/2 teaspoon baking powder
   2. 2 teaspoon baking powder + 1/2 teaspoon baking soda
-  3. 3 teaspoon baking soda (testing, do not use)
-- 1 tsp salt
-- 2 teaspoon baking powder + 1/2 teaspoon baking soda
-- 2 tsp baking powder + 1/2 tsp baking soda + 1/4 tsp cream of tartar + 1 tbsp cornstarch
 
 ### Wet Ingredients:
 - 1 egg, lightly beaten
