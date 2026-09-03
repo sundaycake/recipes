@@ -34,9 +34,10 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 - 1/2 cup sugar
 - Leavening (choose one):
   1. 3 1/2 teaspoon baking powder
-  2. teaspoon baking powder + 1/2 teaspoon baking soda
+  2. 2 teaspoon baking powder + 1/2 teaspoon baking soda
   3. 3 teaspoon baking soda (testing, do not use)
 - 1 tsp salt
+- 2 teaspoon baking powder + 1/2 teaspoon baking soda
 
 ### Wet Ingredients:
 - 1 egg, lightly beaten
