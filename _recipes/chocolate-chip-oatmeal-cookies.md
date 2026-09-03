@@ -29,7 +29,7 @@ source_url: https://www.kingarthurbaking.com/recipes/oatmeal-chocolate-chip-cook
 
 ### Dry
 
-- 2 cups (240 g) all-purpose flour
+- 2 cups all-purpose flour
 - 2 cups rolled oats (old-fashioned or quick-cooking)
 - 1 teaspoon baking powder
 - 1 teaspoon baking soda
