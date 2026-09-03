@@ -695,9 +695,12 @@
     }
     
     function scaleIngredient(parsed, factor) {
-
+    
         if (!parsed.scalable) {
-            return parsed.original;
+            return {
+                text: parsed.original,
+                automaticGrams: false
+            };
         }
 
         const scaledQuantity =
