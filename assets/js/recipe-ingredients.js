@@ -1022,7 +1022,7 @@ document.addEventListener(
                     type: "ingredient",
                     original,
                     parsed,
-                    parsedComponents: parseIngredientComponents(parseText),
+                    parsedComponents: RecipeIngredients.parseComponents(parseText),
                     prefix: optionalMatch
                         ? optionalMatch[0]
                         : ""
@@ -1317,7 +1317,7 @@ document.addEventListener(
                 
                     }
                 );
-        
+            });
         }
 
 
