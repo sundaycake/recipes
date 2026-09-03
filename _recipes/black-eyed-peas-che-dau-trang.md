@@ -1,6 +1,6 @@
 ---
-recipe: Black Eyed Peas Dessert (Che dau Trang)
-description: (chè đậu trắng)
+recipe: Black Eyed Peas "Che" Dessert
+description: (chè đậu trắng) (jie3 do1 jang4)
 image: 
 
 category: Breakfast
