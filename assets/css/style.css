@@ -1115,23 +1115,17 @@ a:hover {
     margin-bottom: 1.5rem;
 }
 
-.recipe-scaling > button,
 .recipe-scaling > .recipe-scaling-label {
     display: inline-block;
-    margin-right: 0.4rem;
+    margin-right: 0.25rem;
 }
 
-.recipe-scaling-label {
-    color: var(--muted);
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
+.recipe-scaling > button {
+    display: inline-block;
 
-.recipe-scaling button {
     width: 3rem;
-    height: 3rem;
+    height: 2.5rem;
+    margin-right: 0.15rem;
     padding: 0;
 
     box-sizing: border-box;
@@ -1146,23 +1140,23 @@ a:hover {
     cursor: pointer;
 }
 
-.recipe-scaling button:hover {
+.recipe-scaling > button:hover {
     background: #faf9f7;
 }
 
-.recipe-scaling button.active {
+.recipe-scaling > button.active {
     border-color: var(--accent);
     background: var(--accent);
     color: #ffffff;
     font-weight: 700;
 }
 
-.recipe-scaling button:focus-visible {
+.recipe-scaling > button:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
-.scale-notes {
+.recipe-scale-notes {
     display: block;
     margin-top: 1rem;
 }
