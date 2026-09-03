@@ -1,6 +1,6 @@
 ---
 recipe: Classic Chili
-description: 
+description: Traditional ground beef chili recipe
 image: 
 
 category: Main Dish
