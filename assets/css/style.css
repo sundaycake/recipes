@@ -1130,8 +1130,8 @@ a:hover {
 }
 
 .recipe-scaling button {
-    width: 4rem;
-    padding: 0.4rem 0.7rem;
+    width: 3rem;
+    padding: 0.2rem 0.3rem;
 
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -1162,4 +1162,5 @@ a:hover {
 .scale-notes {
     display: block;
     margin-top: 1.5rem;
+    padding-top: 1.5rem;
 }
