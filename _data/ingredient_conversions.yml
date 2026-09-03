@@ -51,7 +51,8 @@
 
 - id: "chocolate-chips"
   name: "Chocolate chips"
-  aliases: []
+  aliases:
+    - "semisweet chocolate chips"
   note: ""
   units:
     tsp: 3.5
