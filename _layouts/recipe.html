@@ -66,7 +66,7 @@ layout: default
     {% if page.yield %}
     <div class="recipe-meta-item">
       <dt>Yield</dt>
-      <dd>{{ page.yield }}</dd>
+      <dd id="recipe-yield" data-original-yield="{{ page.yield | escape }}">{{ page.yield }}</dd>
     </div>
     {% endif %}
 
