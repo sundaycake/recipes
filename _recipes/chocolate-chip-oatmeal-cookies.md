@@ -16,7 +16,7 @@ prep_active: 20
 prep_inactive: 
 
 cook_time: 12-17 minutes
-cook_temp: 325
+cook_temp: 325°F (163°C)
 cook_method: 
 
 source: King Arthur
