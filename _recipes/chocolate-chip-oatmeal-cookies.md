@@ -6,7 +6,7 @@ image:
 category: Dessert
 tags: 
   - cookie
-	- bake
+  - bake
 
 yield: 20-50 cookies
 default_scale: 1
