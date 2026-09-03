@@ -1,5 +1,5 @@
 ---
-recipe: Ingredient Ratio and Cooking Time
+recipe: Ratio and Cooking Times of Ingredients
 description: Tapioca mini pearls, Pinto beans, Chickpea, Barley, Coach's oatmeal, Quinoa
 image: 
 
