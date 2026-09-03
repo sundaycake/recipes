@@ -30,7 +30,7 @@ source_url: https://www.allrecipes.com/recipe/260575/chef-johns-almond-biscotti/
 ## Ingredients
 
 ### Dry
-- 2 cups flour
+- 2 cups all-purpose flour
 - 1 tsp baking powder
 - 1/4 tsp salt
 - 1 cup almonds, whole
