@@ -3,7 +3,7 @@ recipe: Ingredient Ratio and Cooking Time
 description: Tapioca mini pearls, Pinto beans, Chickpea, Barley, Coach's oatmeal, Quinoa
 image: 
 
-category: Ratio/Cooking Time
+category: (Reference)
 tags: 
 
 yield: variable
