@@ -5,7 +5,7 @@ image:
 
 category: Dessert
 tags: 
-  - bake
+  - baking
 
 yield: 12 muffins
 default_scale: 1
