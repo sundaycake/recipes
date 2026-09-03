@@ -61,7 +61,8 @@ source_url: https://cooking.nytimes.com/recipes/1018045-chocolate-babka
 8. Remove dough from refrigerator and divide in half. On a floured surface, roll one piece into a 9-by-17-inch rectangle. Spread with half the filling (there's no need to leave a border). Starting with a long side, roll into a tight coil. Wrap in plastic wrap and freeze for 10 minutes. Repeat with the other piece of dough.
 9. Slice one of the dough coils in half lengthwise to expose the filling. Twist the halves together as if you were braiding them, then fold the braid in half so it’s about 9 inches long. Place into a prepared pan and let rise for 1 to 1 ½ hours, until puffy. Alternatively, you can cover the pans with plastic wrap and let them rise in the refrigerator overnight; bring them back to room temperature for an hour before baking.
 10. Preheat oven to 325 degrees. Bake babka until a toothpick is clean, 185-210 degrees. Let cool completely before serving.
-11. 
+
+
 ## Notes
 The chocolate filling may need to be changed, as it melted a lot while proofing and made the braiding process very messy. 
 The nutmeg flavor was also strong.
