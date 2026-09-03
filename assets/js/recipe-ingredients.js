@@ -1019,8 +1019,10 @@ document.addEventListener(
     
                 ingredients.push({
                     element: item,
+                    type: "ingredient",
                     original,
                     parsed,
+                    parsedComponents: parseIngredientComponents(parseText),
                     prefix: optionalMatch
                         ? optionalMatch[0]
                         : ""
@@ -1220,108 +1222,101 @@ document.addEventListener(
         
                     return;
                 }
+              
         
-        
-                /*
-                 * Normal ingredient.
-                 */
-                if (!entry.parsed.scalable) {
-        
-                    entry.element.textContent =
-                        entry.original;
-        
-                    return;
-                }
-        
-        
-                const scaled =
-                    RecipeIngredients.scale(
-                        entry.parsed,
+                const scaledComponents =
+                    RecipeIngredients.scaleComponents(
+                        entry.parsedComponents,
                         scale
                     );
-        
+                
                 entry.element.textContent =
                     entry.prefix;
-        
-        
-                if (!scaled.automaticGrams) {
-        
-                    entry.element.append(
-                        scaled.text
-                    );
-        
-                    return;
-                }
-        
-        
-                /*
-                 * Split the generated text at the automatic
-                 * gram value so it can be styled independently.
-                 */
-                const gramMatch =
-                    scaled.text.match(
-                        /(\(\s*\d+\s+g\s*\))/
-                    );
-        
-        
-                if (!gramMatch) {
-        
-                    entry.element.append(
-                        scaled.text
-                    );
-        
-                    return;
-                }
-        
-        
-                const before =
-                    scaled.text.slice(
-                        0,
-                        gramMatch.index
-                    );
-        
-                const after =
-                    scaled.text.slice(
-                        gramMatch.index +
-                        gramMatch[0].length
-                    );
-        
-        
-                entry.element.append(
-                    before
+                
+                scaledComponents.forEach(
+                    function (scaled, index) {
+                
+                        if (index > 0) {
+                            entry.element.append(" + ");
+                        }
+                
+                        /*
+                         * Non-scalable components are returned using
+                         * their original text.
+                         */
+                        if (!scaled.automaticGrams) {
+                
+                            entry.element.append(
+                                scaled.text
+                            );
+                
+                            return;
+                        }
+                
+                        /*
+                         * Split the generated text at the automatic
+                         * gram value so it can be styled independently.
+                         */
+                        const gramMatch =
+                            scaled.text.match(
+                                /(\(\s*\d+\s+g\s*\))/
+                            );
+                
+                        if (!gramMatch) {
+                
+                            entry.element.append(
+                                scaled.text
+                            );
+                
+                            return;
+                        }
+                
+                        const before =
+                            scaled.text.slice(
+                                0,
+                                gramMatch.index
+                            );
+                
+                        const after =
+                            scaled.text.slice(
+                                gramMatch.index +
+                                gramMatch[0].length
+                            );
+                
+                        entry.element.append(
+                            before
+                        );
+                
+                        const grams =
+                            document.createElement("span");
+                
+                        grams.className =
+                            "ingredient-grams-calculated";
+                
+                        grams.textContent =
+                            gramMatch[0];
+                
+                        grams.setAttribute(
+                            "title",
+                            "Calculated from ingredient conversion data"
+                        );
+                
+                        grams.setAttribute(
+                            "aria-label",
+                            gramMatch[0] +
+                            ", calculated from ingredient conversion data"
+                        );
+                
+                        entry.element.append(
+                            grams
+                        );
+                
+                        entry.element.append(
+                            after
+                        );
+                
+                    }
                 );
-        
-        
-                const grams =
-                    document.createElement("span");
-        
-                grams.className =
-                    "ingredient-grams-calculated";
-        
-                grams.textContent =
-                    gramMatch[0];
-        
-                grams.setAttribute(
-                    "title",
-                    "Calculated from ingredient conversion data"
-                );
-        
-                grams.setAttribute(
-                    "aria-label",
-                    gramMatch[0] +
-                    ", calculated from ingredient conversion data"
-                );
-        
-        
-                entry.element.append(
-                    grams
-                );
-        
-                entry.element.append(
-                    after
-                );
-        
-            });
         
         }
 
