@@ -25,7 +25,7 @@ source: NY Times
 source_url: https://cooking.nytimes.com/recipes/1018045-chocolate-babka
 ---
 
-## Ingredients for the Dough
+## Ingredients
 
 ### Dry
 - 1/3 cup granulated sugar
