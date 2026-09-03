@@ -60,6 +60,8 @@ source_url:
 ## Adaptation
 
 ## Revision History
+```
 2021-02-08 - Initial version
-2025-11-16 - Andrew updated
-2026-07-22 - Enzo updated
+- 2025-11-16 - Andrew updated
+- 2026-07-22 - Enzo updated
+```
