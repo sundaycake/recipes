@@ -1105,3 +1105,55 @@ a:hover {
     }
 
 }
+
+
+/* --------------------------------------------------
+   Recipe scaling
+   -------------------------------------------------- */
+
+.recipe-scaling {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.recipe-scaling-label {
+    margin-right: 0.25rem;
+
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.recipe-scaling button {
+    padding: 0.4rem 0.7rem;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: var(--card-background);
+    color: var(--text);
+
+    font: inherit;
+    cursor: pointer;
+}
+
+.recipe-scaling button:hover {
+    background: #faf9f7;
+}
+
+.recipe-scaling button.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.recipe-scaling button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
