@@ -39,7 +39,10 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 ### Wet Ingredients:
 - 1 egg, lightly beaten
 - 1 cup milk or buttermilk
+- 1/3 cup vegetable oil or 1/3 cup butter
+- 1/3 cup vegetable oil OR 1/3 cup butter
 - 1/3 cup vegetable oil -or- 1/3 cup butter
+- 1/3 cup vegetable oil -OR- 1/3 cup butter
 
 ## Instructions
 
