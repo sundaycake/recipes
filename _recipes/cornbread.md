@@ -3,7 +3,7 @@ recipe: Cornbread
 description: You can't go wrong with 3500 reviews on Allrecipes!
 image: 
 
-category: Side Dish
+category: Main Dish
 tags: 
   - bake
 
@@ -30,7 +30,7 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 ### Dry ingredients
 
 - 1 cup flour
-- 1 cup cornmeal
+- 1 overflowing cup (170 g) cornmeal
 - 1/2 cup sugar
 - 1 tsp salt
 - Option 1: 3 1/2 teaspoon baking powder
@@ -39,7 +39,7 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 ### Wet Ingredients:
 - 1 egg, lightly beaten
 - 1 cup milk or buttermilk
-- 1/3 cup vegetable oil or 1/3 cup butter
+- 1/3 cup vegetable oil or 1/3 cup butter (75 g butter)
 
 ## Instructions
 
