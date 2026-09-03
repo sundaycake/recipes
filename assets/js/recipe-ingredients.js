@@ -1108,8 +1108,123 @@ document.addEventListener(
          */
 
         function renderIngredients(scale) {
+
             ingredients.forEach(function (entry) {
         
+                /*
+                 * Ingredient groups contain nested options.
+                 *
+                 * The group itself is not an ingredient, so we
+                 * render each option independently.
+                 */
+                if (entry.type === "group") {
+        
+                    entry.options.forEach(function (option) {
+        
+                        option.element.textContent =
+                            option.prefix;
+        
+                        const scaledComponents =
+                            RecipeIngredients.scaleComponents(
+                                option.parsedComponents,
+                                scale
+                            );
+        
+                        scaledComponents.forEach(
+                            function (scaled, index) {
+        
+                                if (index > 0) {
+                                    option.element.append(
+                                        " + "
+                                    );
+                                }
+        
+                                if (!scaled.automaticGrams) {
+        
+                                    option.element.append(
+                                        scaled.text
+                                    );
+        
+                                    return;
+                                }
+        
+                                /*
+                                 * Split the generated text at the
+                                 * automatic gram value so it can be
+                                 * styled independently.
+                                 */
+                                const gramMatch =
+                                    scaled.text.match(
+                                        /(\(\s*\d+\s+g\s*\))/
+                                    );
+        
+                                if (!gramMatch) {
+        
+                                    option.element.append(
+                                        scaled.text
+                                    );
+        
+                                    return;
+                                }
+        
+                                const before =
+                                    scaled.text.slice(
+                                        0,
+                                        gramMatch.index
+                                    );
+        
+                                const after =
+                                    scaled.text.slice(
+                                        gramMatch.index +
+                                        gramMatch[0].length
+                                    );
+        
+                                option.element.append(
+                                    before
+                                );
+        
+                                const grams =
+                                    document.createElement(
+                                        "span"
+                                    );
+        
+                                grams.className =
+                                    "ingredient-grams-calculated";
+        
+                                grams.textContent =
+                                    gramMatch[0];
+        
+                                grams.setAttribute(
+                                    "title",
+                                    "Calculated from ingredient conversion data"
+                                );
+        
+                                grams.setAttribute(
+                                    "aria-label",
+                                    gramMatch[0] +
+                                    ", calculated from ingredient conversion data"
+                                );
+        
+                                option.element.append(
+                                    grams
+                                );
+        
+                                option.element.append(
+                                    after
+                                );
+        
+                            }
+                        );
+        
+                    });
+        
+                    return;
+                }
+        
+        
+                /*
+                 * Normal ingredient.
+                 */
                 if (!entry.parsed.scalable) {
         
                     entry.element.textContent =
@@ -1117,6 +1232,7 @@ document.addEventListener(
         
                     return;
                 }
+        
         
                 const scaled =
                     RecipeIngredients.scale(
@@ -1127,6 +1243,7 @@ document.addEventListener(
                 entry.element.textContent =
                     entry.prefix;
         
+        
                 if (!scaled.automaticGrams) {
         
                     entry.element.append(
@@ -1135,6 +1252,7 @@ document.addEventListener(
         
                     return;
                 }
+        
         
                 /*
                  * Split the generated text at the automatic
@@ -1145,6 +1263,7 @@ document.addEventListener(
                         /(\(\s*\d+\s+g\s*\))/
                     );
         
+        
                 if (!gramMatch) {
         
                     entry.element.append(
@@ -1153,6 +1272,7 @@ document.addEventListener(
         
                     return;
                 }
+        
         
                 const before =
                     scaled.text.slice(
@@ -1166,9 +1286,11 @@ document.addEventListener(
                         gramMatch[0].length
                     );
         
+        
                 entry.element.append(
                     before
                 );
+        
         
                 const grams =
                     document.createElement("span");
@@ -1190,6 +1312,7 @@ document.addEventListener(
                     ", calculated from ingredient conversion data"
                 );
         
+        
                 entry.element.append(
                     grams
                 );
@@ -1199,6 +1322,7 @@ document.addEventListener(
                 );
         
             });
+        
         }
 
 
@@ -1250,33 +1374,40 @@ document.addEventListener(
                 recipe.dataset.scaleNotes;
         
             if (rawScaleNotes) {
-        
-                scaleNotes =
-                    JSON.parse(rawScaleNotes)
-                        .map(function (entry) {
-        
-                            const parts =
-                                entry.split("|")
-                                    .map(function (part) {
-                                        return part.trim();
-                                    });
-        
-                            const scale =
-                                parseFloat(parts.shift());
-        
-                            return {
-                                scale,
-                                notes: parts.filter(Boolean)
-                            };
-        
-                        })
-                        .filter(function (entry) {
-                            return (
-                                Number.isFinite(entry.scale) &&
-                                entry.notes.length > 0
-                            );
-                        });
-        
+
+                const parsedScaleNotes =
+                    JSON.parse(rawScaleNotes);
+            
+                if (Array.isArray(parsedScaleNotes)) {
+            
+                    scaleNotes =
+                        parsedScaleNotes
+                            .map(function (entry) {
+            
+                                const parts =
+                                    entry.split("|")
+                                        .map(function (part) {
+                                            return part.trim();
+                                        });
+            
+                                const scale =
+                                    parseFloat(parts.shift());
+            
+                                return {
+                                    scale,
+                                    notes: parts.filter(Boolean)
+                                };
+            
+                            })
+                            .filter(function (entry) {
+                                return (
+                                    Number.isFinite(entry.scale) &&
+                                    entry.notes.length > 0
+                                );
+                            });
+            
+                }
+            
             }
         
         } catch (error) {
