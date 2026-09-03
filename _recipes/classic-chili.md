@@ -25,27 +25,31 @@ source_url: https://www.thewholesomedish.com/the-best-classic-chili/
 
 - 1 tablespoon olive oil
 - 1 medium yellow onion, diced
+- 1 pound ground beef
 - 3 tablespoons canned green chilies
 - 3 cloves garlic
-- 1 pound ground beef
 - 1 tablespoon brown sugar
-- 1 teaspoon salt
-- ½ teaspoon ground black pepper
-- 2 tablespoons chili powder
-- ¼ teaspoon ground cayenne pepper
-- 1 tablespoon ground cumin
-- 1 tablespoon garlic powder
-- 1 tsp paprika
-- 1 teaspoon ground oregano
-- 2 teaspoons unsweetened cocoa powder
-- Squirt of Worcestershire sauce
-- Dash of apple cider vinegar
 - 1 cup water, broth, or beer
 - 2 tablespoons tomato paste
 - 1 (15 oz) can diced tomatoes
 - 1 (16 oz) can red kidney beans, drained and rinsed
 - 1 (16 oz) can pinto beans
 - 1 (16 oz) can chickpeas
+
+### Seasoning
+- 2 tablespoons chili powder
+- ¼ teaspoon ground cayenne pepper
+- 1 tablespoon ground cumin
+- 1 tablespoon garlic powder
+- 1 tsp paprika
+- 1 teaspoon ground oregano
+- ½ teaspoon ground black pepper
+- 1 teaspoon salt
+
+### Aromatics
+- 2 teaspoons unsweetened cocoa powder
+- Squirt of Worcestershire sauce
+- Dash of apple cider vinegar
 
 ## Instructions
 
