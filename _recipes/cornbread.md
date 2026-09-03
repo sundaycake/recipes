@@ -3,9 +3,9 @@ recipe: Cornbread
 description: You can't go wrong with 3500 reviews on Allrecipes!
 image: 
 
-category: Main Dish
+category: Side Dish
 tags: 
-  - bake
+  - baking
 
 yield: 8 servings
 default_scale: 1
@@ -33,8 +33,9 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 - 1 overflowing cup (170 g) cornmeal
 - 1/2 cup sugar
 - 1 tsp salt
-- Option 1: 3 1/2 teaspoon baking powder
-- Option 2: 2 teaspoon baking powder + 1/2 teaspoon baking soda
+- Leavening agent:
+  - Option 1: 3 1/2 teaspoon baking powder
+  - Option 2: 2 teaspoon baking powder + 1/2 teaspoon baking soda
 
 ### Wet Ingredients:
 - 1 egg, lightly beaten
