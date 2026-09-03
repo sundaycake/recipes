@@ -1445,3 +1445,10 @@ document.addEventListener(
 
     }
 );
+
+console.log(
+    "Multi-component test:",
+    RecipeIngredients.parseComponents(
+        "2 tsp baking powder + 1/2 tsp baking soda"
+    )
+);
