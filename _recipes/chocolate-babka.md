@@ -27,6 +27,8 @@ source_url: https://cooking.nytimes.com/recipes/1018045-chocolate-babka
 
 ## Ingredients
 
+> Ingredients for the Dough
+
 ### Dry
 - 1/3 cup granulated sugar
 - 4 1/4 cups all-purpose flour
@@ -41,7 +43,7 @@ source_url: https://cooking.nytimes.com/recipes/1018045-chocolate-babka
 - 4 large eggs, room temperature, lightly beaten
 - 9 tablespoons butter, room temperature
 
-### Ingredients for the Fudge Filling
+> Ingredients for the Fudge Filling
 - 1/2 cup granulated sugar
 - 3/4 cup heavy cream, or half and half, or evaporated milk
 - 1.5 tablespoons of butter (if using evaporated milk)
