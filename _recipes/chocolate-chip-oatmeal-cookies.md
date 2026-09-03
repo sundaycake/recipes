@@ -34,7 +34,7 @@ source_url: https://www.kingarthurbaking.com/recipes/oatmeal-chocolate-chip-cook
 - 1 teaspoon baking powder
 - 1 teaspoon baking soda
 - 1 teaspoon kosher salt
-- 2.2 cups semisweet chocolate chips
+- 2 cups semisweet chocolate chips
 
 
 ### Cream Ingredients
