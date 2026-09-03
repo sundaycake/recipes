@@ -85,3 +85,7 @@ Cookie sizes:
 - Doubled oats, reduce sugar, reduce chocolate chips
 
 ## Revision History
+- 2021-08-02 - Initial version
+- 2022-06-16 - Andrew update
+- 2023-08-10 - Andrew update
+- 2026-05-03 - Andrew update
