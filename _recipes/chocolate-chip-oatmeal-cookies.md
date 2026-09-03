@@ -1,6 +1,6 @@
 ---
 recipe: Chocolate Chip Oatmeal Cookies
-description: Family favorite
+description: The right amount of oatmeal
 image: 
 
 category: Dessert
