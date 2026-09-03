@@ -32,9 +32,10 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
 - 1 cup flour
 - 1 overflowing cup (170 g) cornmeal
 - 1/2 cup sugar
-- 3 1/2 teaspoon baking powder
-- or
-- 2 teaspoon baking powder + 1/2 teaspoon baking soda
+- Leavening (choose one):
+  1. 3 1/2 teaspoon baking powder
+  2. teaspoon baking powder + 1/2 teaspoon baking soda
+  3. 3 teaspoon baking soda (testing, do not use)
 - 1 tsp salt
 
 ### Wet Ingredients:
