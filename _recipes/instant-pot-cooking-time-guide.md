@@ -5,6 +5,7 @@ image:
 
 category: Ratio/Cooking Time
 tags: 
+  - Instant Pot
 
 yield: 
 default_scale: 
