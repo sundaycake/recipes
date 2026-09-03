@@ -557,6 +557,46 @@
 
 
     /* ==================================================
+       6a. MULTI-COMPONENT INGREDIENT PARSING
+       ================================================== */
+
+    function parseIngredientComponents(text) {
+        /*
+         * An ingredient expression may contain multiple
+         * independently measurable components separated by "+".
+         *
+         * Example:
+         *
+         * 2 tsp baking powder + 1/2 tsp baking soda
+         *
+         * becomes two independently parsed ingredients.
+         *
+         * We require whitespace around the "+" so that we don't
+         * accidentally split an ingredient name containing a plus
+         * sign.
+         *
+         * This supports any number of components:
+         *
+         * A + B
+         * A + B + C
+         * A + B + C + D
+         * etc.
+         */
+    
+        const parts = text
+            .split(/\s+\+\s+/)
+            .map(function (part) {
+                return part.trim();
+            })
+            .filter(Boolean);
+    
+        return parts.map(function (part) {
+            return parseIngredient(part);
+        });
+    }
+    
+
+    /* ==================================================
        7. SCALING
        ================================================== */
 
@@ -773,6 +813,20 @@
 
 
     /* ==================================================
+       7a. MULTI-COMPONENT INGREDIENT SCALING
+       ================================================== */
+    
+    function scaleIngredientComponents(
+        parsedComponents,
+        factor
+    ) {
+        return parsedComponents.map(function (parsed) {
+            return scaleIngredient(parsed, factor);
+        });
+    }
+
+
+    /* ==================================================
        8. INGREDIENT LIST DISCOVERY
        ================================================== */
     
@@ -825,9 +879,12 @@
        ================================================== */
 
     window.RecipeIngredients = {
-    
+
         parse: parseIngredient,
+        parseComponents: parseIngredientComponents,
+    
         scale: scaleIngredient,
+        scaleComponents: scaleIngredientComponents,
     
         formatNumber,
     
