@@ -929,10 +929,66 @@ document.addEventListener(
 
         ingredientLists.forEach(function (list) {
 
-        list
-            .querySelectorAll("li")
+        Array.from(list.children)
+            .filter(function (item) {
+                return item.tagName === "LI";
+            })
             .forEach(function (item) {
-    
+
+                const nestedList =
+                    Array.from(item.children).find(function (child) {
+                        return (
+                            child.tagName === "OL" ||
+                            child.tagName === "UL"
+                        );
+                    });
+        
+                if (nestedList) {
+        
+                    const options =
+                        Array.from(nestedList.children)
+                            .filter(function (child) {
+                                return child.tagName === "LI";
+                            })
+                            .map(function (option) {
+        
+                                const original =
+                                    option.textContent.trim();
+        
+                                const optionalMatch =
+                                    original.match(
+                                        /^optional\s*:\s*/i
+                                    );
+        
+                                const parseText =
+                                    optionalMatch
+                                        ? original.slice(
+                                            optionalMatch[0].length
+                                        ).trim()
+                                        : original;
+        
+                                return {
+                                    element: option,
+                                    original,
+                                    prefix: optionalMatch
+                                        ? optionalMatch[0]
+                                        : "",
+                                    parsedComponents:
+                                        RecipeIngredients.parseComponents(
+                                            parseText
+                                        )
+                                };
+                            });
+        
+                    ingredients.push({
+                        element: item,
+                        type: "group",
+                        options
+                    });
+        
+                    return;
+                }
+
                 const original =
                     item.textContent.trim();
     
