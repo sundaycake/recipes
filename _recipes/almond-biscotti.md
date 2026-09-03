@@ -6,7 +6,7 @@ image:
 category: Dessert
 tags: 
   - cookie
-  - bake
+  - baking
 
 yield: 15 biscotti per batch
 default_scale: 2
