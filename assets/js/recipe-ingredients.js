@@ -1610,6 +1610,51 @@ document.addEventListener(
                 original.slice(match[0].length);
         }
 
+        /*
+         * Inserts Celsius in temperatures that don't have it
+         */
+
+        function updateTemperature() {
+            const temperatureElement =
+                document.querySelector(
+                    ".recipe-meta-item dd[data-temperature]"
+                );
+        
+            if (!temperatureElement) {
+                return;
+            }
+        
+            const original =
+                temperatureElement.dataset.temperature;
+        
+            if (!original) {
+                return;
+            }
+        
+            // Already contains Celsius.
+            if (/\(\s*[-+]?\d+(?:\.\d+)?\s*°?\s*C\s*\)/i.test(original)) {
+                temperatureElement.textContent = original;
+                return;
+            }
+        
+            // Match temperatures such as 400°F, 400 F, or 400F.
+            const match =
+                original.match(
+                    /([-+]?\d+(?:\.\d+)?)\s*°?\s*F\b/i
+                );
+        
+            if (!match) {
+                temperatureElement.textContent = original;
+                return;
+            }
+        
+            const fahrenheit = parseFloat(match[1]);
+            const celsius = Math.round((fahrenheit - 32) * 5 / 9);
+        
+            temperatureElement.textContent =
+                original + " (" + celsius + "°C)";
+        }
+        
         
         /*
          * Change the current scale.
@@ -1678,7 +1723,7 @@ document.addEventListener(
         /*
          * Initial render.
          */
-
+        updateTemperature();
         setScale(currentScale);
 
     }
