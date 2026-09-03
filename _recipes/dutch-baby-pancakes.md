@@ -11,7 +11,7 @@ yield: 4 servings
 default_scale: 1
 scale_notes: 
   - "1.0 | Use one cast iron pan"
-  - "2.0 | Use two case iron pans"
+  - "2.0 | Use two cast iron pans"
 prep_active: 5
 prep_inactive: 
 
