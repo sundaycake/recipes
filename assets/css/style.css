@@ -1117,15 +1117,15 @@ a:hover {
 
 .recipe-scaling > .recipe-scaling-label {
     display: inline-block;
-    margin-right: 0.25rem;
+    margin-right: 0.2rem;
 }
 
 .recipe-scaling > button {
     display: inline-block;
 
-    width: 3rem;
-    height: 2.5rem;
-    margin-right: 0.15rem;
+    width: 2.5rem;
+    height: 2rem;
+    margin-right: 0.1rem;
     padding: 0;
 
     box-sizing: border-box;
