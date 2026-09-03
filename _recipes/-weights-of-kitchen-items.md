@@ -21,6 +21,12 @@ source:
 source_url: 
 ---
 
+## Kinto glass coffee server
+- 179 grams
+
+## 20 Oz Yeti
+- 488 grams
+
 ## Stand mixer bowl
 - 755 grams
 
@@ -29,9 +35,3 @@ source_url:
 
 ## 1-Quart Corelle bowl
 - 318 grams on average
-
-## Kinto glass coffee server
-- 179 grams
-
-## 20 Oz Yeti
-- 488 grams
