@@ -248,6 +248,30 @@ body {
 }
 
 /* --------------------------------------------------
+   Ingredient option groups
+   -------------------------------------------------- */
+
+.recipe-content ul li > ol {
+    list-style: none;
+    counter-reset: ingredient-option;
+    padding-left: 2.5rem;
+}
+
+.recipe-content ul li > ol > li {
+    list-style: none;
+    counter-increment: ingredient-option;
+    position: relative;
+}
+
+.recipe-content ul li > ol > li::before {
+    content: counter(ingredient-option, lower-alpha) ")";
+    position: absolute;
+    left: -2rem;
+    width: 1.75rem;
+    text-align: right;
+}
+
+/* --------------------------------------------------
    Recipe content (Automatically calculated ingredient measurements)
    -------------------------------------------------- */
 
