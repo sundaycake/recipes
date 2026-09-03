@@ -5,7 +5,7 @@ image:
 
 category: Bread
 tags: 
-  - bake
+  - baking
   - bread machine
   - sourdough
 
