@@ -1130,6 +1130,7 @@ a:hover {
 }
 
 .recipe-scaling button {
+    width: 4rem;
     padding: 0.4rem 0.7rem;
 
     border: 1px solid var(--border);
