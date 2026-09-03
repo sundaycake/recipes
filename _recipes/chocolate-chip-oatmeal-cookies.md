@@ -44,7 +44,7 @@ source_url: https://www.kingarthurbaking.com/recipes/oatmeal-chocolate-chip-cook
 - 90 g granulated sugar
 - 1 large egg, at room temperature
 - 1 large egg yolk, at room temperature
-- 1 tablespoon (14 g) vanilla extract
+- 1 tablespoon vanilla extract
 
 ## Instructions
 
