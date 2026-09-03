@@ -30,7 +30,10 @@
 
 - id: "butter"
   name: "Butter"
-  aliases: []
+  aliases:
+    - "unsalted butter"
+    - "salted butter"
+    - "melted butter"
   note: ""
   units:
     tsp: 4.5
@@ -67,7 +70,8 @@
 
 - id: "cornstarch"
   name: "Cornstarch"
-  aliases: []
+  aliases:
+    - "corn starch"
   note: ""
   units:
     tsp: 2.5
@@ -93,7 +97,7 @@
   units:
     tsp: 2
     tbsp: 6
-    cup: 96
+    cup: 100
 
 - id: "flour-bread"
   name: "Bread flour"
@@ -142,7 +146,8 @@
 
 - id: "oats"
   name: "Oats"
-  aliases: []
+  aliases:
+    - "rolled oats"
   note: ""
   units:
     tsp: 2
