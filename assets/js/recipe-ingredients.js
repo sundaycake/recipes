@@ -1468,11 +1468,11 @@ document.addEventListener(
                 document.createElement("strong");
         
             label.textContent =
-                "Scale Notes (" +
+                "Notes for scaling at " +
                 RecipeIngredients.formatNumber(
                     matchingNotes.scale
                 ) +
-                "×)";
+                "×: ";
         
             notesContainer.appendChild(label);
         
