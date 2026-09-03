@@ -35,11 +35,11 @@ source_url:
 - 1/2 tsp salt
 - Optional: 1/2 cup chopped walnuts and/or 1/2 cup chocolate chips (100g)
 
-Wet Ingredients:
-1 cup mashed bananas (2-3 overripe bananas)
-2 eggs, lightly beaten
-1/3 cup milk
-1/3 cup vegetable oil
+### Wet Ingredients:
+- 1 cup mashed bananas (2-3 overripe bananas)
+- 2 eggs, lightly beaten
+- 1/3 cup milk
+- 1/3 cup vegetable oil
 
 ## Instructions
 
