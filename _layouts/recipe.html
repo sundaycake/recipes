@@ -42,6 +42,13 @@ layout: default
 
   <dl class="recipe-meta">
 
+    {% if page.yield %}
+    <div class="recipe-meta-item">
+      <dt>Yield</dt>
+      <dd id="recipe-yield" data-original-yield="{{ page.yield | escape }}">{{ page.yield }}</dd>
+    </div>
+    {% endif %}
+   
     {% if page.cook_method %}
     <div class="recipe-meta-item">
       <dt>Method</dt>
@@ -58,13 +65,6 @@ layout: default
           {{ page.cook_temp }}
       </dd>
 
-    </div>
-    {% endif %}
-
-    {% if page.yield %}
-    <div class="recipe-meta-item">
-      <dt>Yield</dt>
-      <dd id="recipe-yield" data-original-yield="{{ page.yield | escape }}">{{ page.yield }}</dd>
     </div>
     {% endif %}
     
