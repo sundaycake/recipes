@@ -5,7 +5,7 @@ image:
 
 category: Dessert
 tags: 
-  - bake
+  - baking
 
 yield: 1 loaf
 default_scale: 1
