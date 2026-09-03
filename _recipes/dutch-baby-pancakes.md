@@ -12,7 +12,7 @@ default_scale: 1
 scale_notes: 
   - "1.0 | Use one cast iron pan"
   - "2.0 | Use two cast iron pans"
-prep_active: 5
+prep_active: 5 minutes
 prep_inactive: 
 
 cook_time: 15-20 minutes
