@@ -38,6 +38,7 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
   3. 3 teaspoon baking soda (testing, do not use)
 - 1 tsp salt
 - 2 teaspoon baking powder + 1/2 teaspoon baking soda
+- 2 tsp baking powder + 1/2 tsp baking soda + 1/4 tsp cream of tartar + 1 tbsp cornstarch
 
 ### Wet Ingredients:
 - 1 egg, lightly beaten
