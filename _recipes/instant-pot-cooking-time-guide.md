@@ -3,7 +3,7 @@ recipe: Instant Pot Cooking Time Guide
 description: General guidelines
 image: 
 
-category: Ratio/Cooking Time
+category: (Reference)
 tags: 
   - Instant Pot
 
