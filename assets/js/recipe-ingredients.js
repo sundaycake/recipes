@@ -700,9 +700,6 @@
             return parsed.original;
         }
 
-        const minimum =
-            parsed.quantity * factor;
-
         const scaledQuantity =
             parsed.quantity * factor;
         
@@ -1628,9 +1625,3 @@ document.addEventListener(
     }
 );
 
-console.log(
-    "Multi-component test:",
-    RecipeIngredients.parseComponents(
-        "2 tsp baking powder + 1/2 tsp baking soda"
-    )
-);
