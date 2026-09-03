@@ -36,7 +36,7 @@ source_url: https://www.allrecipes.com/recipe/17891/golden-sweet-cornbread/
   1. 3 1/2 teaspoon baking powder
   2. 2 teaspoon baking powder + 1/2 teaspoon baking soda
 
-### Wet Ingredients:
+### Wet Ingredients
 - 1 egg, lightly beaten
 - 1 cup milk or buttermilk
 - 1/3 cup vegetable oil or 1/3 cup butter
