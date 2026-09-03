@@ -1600,11 +1600,8 @@ document.addEventListener(
                 return;
             }
         
-            const scaled =
-                RecipeIngredients.formatNumber(
-                    quantity * scale
-                );
-        
+            const scaled = Math.ceil(quantity * scale);
+
             yieldElement.textContent =
                 scaled +
                 original.slice(match[0].length);
