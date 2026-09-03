@@ -5,6 +5,7 @@ image:
 
 category: Breakfast
 tags: 
+  - sourdough
 
 yield: 4 servings
 default_scale: 1
