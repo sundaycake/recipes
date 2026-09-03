@@ -1558,6 +1558,58 @@ document.addEventListener(
                 "(" + label + ")";
         }
 
+
+        /*
+         * Updates Yield display when scaling is selected
+         */
+        function updateYield(scale) {
+            const yieldElement =
+                document.querySelector("#recipe-yield");
+        
+            if (!yieldElement) {
+                return;
+            }
+        
+            const original =
+                yieldElement.dataset.originalYield;
+        
+            if (!original) {
+                return;
+            }
+        
+            const numberPattern =
+                "(\\d+(?:\\.\\d+)?\\s+\\d+\\/\\d+|\\d+\\/\\d+|\\d+(?:\\.\\d+)?)";
+        
+            const match =
+                original.match(
+                    new RegExp("^\\s*" + numberPattern)
+                );
+        
+            if (!match) {
+                yieldElement.textContent = original;
+                return;
+            }
+        
+            const quantity =
+                RecipeIngredients.parse(
+                    match[1] + " yield"
+                ).quantity;
+        
+            if (!Number.isFinite(quantity)) {
+                yieldElement.textContent = original;
+                return;
+            }
+        
+            const scaled =
+                RecipeIngredients.formatNumber(
+                    quantity * scale
+                );
+        
+            yieldElement.textContent =
+                scaled +
+                original.slice(match[0].length);
+        }
+
         
         /*
          * Change the current scale.
@@ -1587,6 +1639,10 @@ document.addEventListener(
             );
         
             updateIngredientsHeading(
+                currentScale
+            );
+
+            updateYield(
                 currentScale
             );
         
