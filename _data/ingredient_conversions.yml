@@ -85,11 +85,12 @@
     - "AP flour"
     - "all purpose flour"
     - "plain flour"
+    - "flour"
   note: "Sifted"
   units:
     tsp: 2.5
     tbsp: 8
-    cup: 125
+    cup: 120
 
 - id: "flour-almond"
   name: "Almond flour"
