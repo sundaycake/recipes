@@ -255,12 +255,15 @@ body {
     list-style: none;
     counter-reset: ingredient-option;
     padding-left: 2.5rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.5rem;
 }
 
 .recipe-content ul li > ol > li {
     list-style: none;
     counter-increment: ingredient-option;
     position: relative;
+    margin-bottom: 0.25rem;
 }
 
 .recipe-content ul li > ol > li::before {
