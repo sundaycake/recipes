@@ -1,6 +1,6 @@
 ---
 recipe: Pao cai (Pickled cabbage)
-description: Pao cai (pickled cabbage) / 泡菜; pinyin: pàocài)
+description: Pao cai (pickled cabbage) / 泡菜 pàocài)
 image: 
 
 category: Side Dish
