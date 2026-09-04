@@ -3,7 +3,7 @@ recipe: Muffins (Master Recipe)
 description: Ongoing improvements
 image: 
 
-category: Desserts
+category: Dessert
 tags: 
   - baking
 
