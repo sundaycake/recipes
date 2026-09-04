@@ -12,8 +12,8 @@ default_scale: 1
 scale_notes: 
   - "0.5 | Use one 12-count muffin pans"
   - "1.0 | Use two 12-count muffin pans"
-	- "1.5 | Use three 12-count muffin pans"
-	- "2.0 | Use four 12-count muffin pans"
+  - "1.5 | Use three 12-count muffin pans"
+  - "2.0 | Use four 12-count muffin pans"
 prep_active: 15
 prep_inactive: 
 
