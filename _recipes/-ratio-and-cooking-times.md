@@ -1,6 +1,6 @@
 ---
 recipe: Ratio and Cooking Times of Ingredients
-description: Tapioca mini pearls, Pinto beans, Chickpea, Barley, Coach's oatmeal, Quinoa
+description: Tapioca mini pearls, Pinto beans, Chickpea, Barley, Coach's oatmeal, Quinoa, Coffee Cold Brew, Hario Grind settings
 image: 
 
 category: (Reference)
@@ -47,8 +47,13 @@ source_url:
 ## Quinoa
 - 1:1.75 ratio of quinoa to water (1 cup quinoa to 1 3/4 cups water)
 
+## Coffee Cold Brew (64 oz mason jar)
+- 175 g coffee
+- 1400 mL water
 
-
+## Hario Grind settings
+- White pepper: 3
+- Black pepper: 5
 
 
 
