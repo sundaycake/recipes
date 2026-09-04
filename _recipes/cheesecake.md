@@ -9,8 +9,8 @@ tags:
 yield: One 6" cheesecake
 default_scale: 1
 scale_notes: 
-  - "1.0 | Use one 6" cheesecake pan"
-  - "1.5 | Use one 8" cheesecake pan"
+  - "1.0 | Use one 6-inch cheesecake pan"
+  - "1.5 | Use one 8-inch cheesecake pan"
 
 prep_active: 20 minutes
 prep_inactive: 3 hours
