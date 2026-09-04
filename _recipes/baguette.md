@@ -38,10 +38,8 @@ source_url: https://tasteofartisan.com/french-baguette-recipe/#recipe
 5. Preshape: stretch each dough into a horizontal rectangle, keep the top of the rectangle unfloured. Fold the bottom up to the middle, seal, then top down to middle, seal, forming a cylinder
 6. Proof for 30 - 60 minutes, or until puffy, finger indent should not spring back
 7. Preheat oven to 425 degrees F, with a tray of water at the bottom to help with steam. When the baguettes are proofed, transfer to a couche with seam side down and score
-8. Bake 15 minutes with steam, then 15 minutes without, check every 5 minutes. 
-9. 15 minutes before granola is done, add nuts and dried fruit
-10. (Optional) Turn off oven, allow granola to rest for 1 hour for maximum crunchiness
-
+8. Bake 15 minutes with steam, then 15 minutes without, check every 5 minutes.
+   
 ## Notes
 Try 75% hydration next time (375 g water instead of 360 g)
 
