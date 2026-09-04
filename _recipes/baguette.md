@@ -15,7 +15,7 @@ prep_active: 30 minutes
 prep_inactive: 12 hours
 cook_time: 30 minutes
 
-cook_temp: 425°F (219°C)
+cook_temp: 425°F
 cook_method: bake
 
 source: Taste of Artisan
