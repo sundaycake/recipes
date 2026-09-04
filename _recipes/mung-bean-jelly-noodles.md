@@ -20,10 +20,12 @@ cook_method: Stove pot
 source: 
 source_url: 
 ---
+## Ratio
+Use a 1:7 ratio of mung bean starch to water
 
 ## Ingredients
 
-- 1 cup mung bean starch + 7 cups water (1:7 ratio of mung bean starch to water)
+- 1 cup mung bean starch + 7 cups water
 - 1 tsp salt
 
 ## Instructions
