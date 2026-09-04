@@ -214,35 +214,47 @@
     }
 
 
-    function formatUnit(unit, quantity, original) {
+    function formatUnit(unit, quantity) {
 
-        // Abbreviations are invariant.
-        if (
-            unit === "tsp" ||
-            unit === "tbsp" ||
-            unit === "g" ||
-            unit === "kg" ||
-            unit === "oz" ||
-            unit === "lb" ||
-            unit === "ml" ||
-            unit === "l" ||
-            unit === "fl oz"
-        ) {
-            return original;
+        /*
+         * Display units in their full, normalized form.
+         *
+         * Gram measurements are the exception:
+         * always display as "g".
+         */
+    
+        if (unit === "g") {
+            return "g";
         }
     
         const singular = {
+            tsp: "teaspoon",
+            tbsp: "tablespoon",
             cup: "cup",
+            "fl oz": "fluid ounce",
             pint: "pint",
             quart: "quart",
-            gallon: "gallon"
+            gallon: "gallon",
+            ml: "milliliter",
+            l: "liter",
+            kg: "kilogram",
+            oz: "ounce",
+            lb: "pound"
         };
     
         const plural = {
+            tsp: "teaspoons",
+            tbsp: "tablespoons",
             cup: "cups",
+            "fl oz": "fluid ounces",
             pint: "pints",
             quart: "quarts",
-            gallon: "gallons"
+            gallon: "gallons",
+            ml: "milliliters",
+            l: "liters",
+            kg: "kilograms",
+            oz: "ounces",
+            lb: "pounds"
         };
     
         if (
@@ -256,7 +268,7 @@
                 : plural[unit];
         }
     
-        return original;
+        return unit;
     }
     
     /* ==================================================
@@ -781,8 +793,7 @@
             result += " ";
             result += formatUnit(
                 parsed.unit.canonical,
-                unitQuantity,
-                parsed.unit.original
+                unitQuantity
             );
         }
         
@@ -801,7 +812,10 @@
             );
         
             result += " ";
-            result += parsed.alternate.unit.original;
+            result += formatUnit(
+                parsed.alternate.unit.canonical,
+                parsed.alternate.quantity * factor
+            );
             result += ")";
         
         }
