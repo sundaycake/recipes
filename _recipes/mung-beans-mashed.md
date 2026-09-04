@@ -1,12 +1,11 @@
 ---
-recipe: Mashed Mung Bean
-description: (Dau Xanh Danh)
+recipe: Mung Bean Paste
+description: (Dau Xanh Danh) / Sweet or savory
 image: 
 
 category: Side Dish
 tags: 
   - instant pot
-  - filling
 
 yield: 15 oz
 default_scale: 1
