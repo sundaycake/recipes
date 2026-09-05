@@ -17,8 +17,8 @@ cook_time:
 cook_temp: 350°F
 cook_method: 
 
-source: 
-source_url: https://www.facebook.com/jhoeberns/posts/ube-monggo-hopia-recipe-ingredientsmunggo-filling1-cup-red-mung-bean-or-yellow-b/9407439129287352/
+source: Best Baking Tips
+source_url: https://bestbakingtips.com/sweet-mung-bean-hopia/
 ---
 
 ## Equipment
