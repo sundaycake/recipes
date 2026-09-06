@@ -56,10 +56,11 @@ Day 2
 
 ## Notes
 Pan size reference:
-8×8-inch square = thick focaccia
-9×9-inch = medium thickness
-9×12-inch = fairly thin
-7/30/26
+- 8×8-inch square = thick focaccia
+- 9×9-inch = medium thickness
+- 9×12-inch = fairly thin
+
+### 7/30/26
 - Used Netherton 12" shallow pan. Focaccia rose to 2.5" high
 - Bake on second from bottom rack, on preheated pan or pizza stone to catch oil drippings
 - Bake at 450 F for 10 minutes, then reduce to 420 F, this reduces the need for foil/heat shield
