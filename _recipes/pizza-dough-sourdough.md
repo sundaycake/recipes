@@ -28,6 +28,13 @@ Bread Machine
 
 
 ## Ingredients
+
+### Poolish Ingredients
+- 40 g starter
+- 125 g water
+- 125 g bread flour
+
+### Pizza Dough Ingredients
 - 290 g poolish
 - 150 g water
 - 1 tablespoon olive oil
