@@ -11,7 +11,7 @@ yield: 4 servings
 default_scale: 1
 scale_notes: 
 
-prep_active: 5
+prep_active: 5 minutes
 prep_inactive: 
 
 cook_time: 25-28 minutes
