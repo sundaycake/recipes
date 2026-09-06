@@ -24,15 +24,11 @@ source_url: https://sugarspunrun.com/buttermilk-pancakes/
 * Cast iron pans
 
 ## Ingredients
-
-### Flour
-- 50 g oat flour
-- 30 g flax seed meal 
-- 170 g all-purpose flour
-> OR
-- 2 cups all-purpose flour
-
+  
 ### Dry
+- Flour (choose one):
+  1. 50 g oat flour + 30 g flax seed meal + 170 g all purpose flour
+  2. 2 cups all purpose flour
 - 3 Tbsp sugar
 - 1.5 tsp baking powder
 - 1 tsp baking soda
