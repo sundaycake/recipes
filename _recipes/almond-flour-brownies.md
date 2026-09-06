@@ -36,7 +36,7 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 - 1/2 teaspoon salt
 
 ### Wet
-- 5 tablespoons butter softened
+- 4.5 tablespoons butter softened
 - 3 large eggs
 - 1 teaspoon vanilla extract
 - 1 cup granulated sugar
@@ -66,6 +66,7 @@ source_url: https://thebigmansworld.com/almond-flour-brownies/
 
 * Brown sugar makes brownie more chewy. Granulated sugar is slightly better for whisking and shiny top
 * Shiny brownie top science: The glossy layer forms from sugar dissolving into the egg's liquid/protein phase and rising to the surface
+* Consider melting butter and melting the sugar into the butter before combining with eggs. Minimize the amount of air that gets incorporated into the brownies.
 
 ## Substitutions
 
