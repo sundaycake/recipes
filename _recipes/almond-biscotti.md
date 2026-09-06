@@ -12,7 +12,7 @@ yield: 15 biscotti per batch
 default_scale: 2
 scale_notes: 
 
-prep_active: 15
+prep_active: 15 minutes
 prep_inactive: 1 hour
 
 cook_time: 1 hour
