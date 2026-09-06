@@ -3,8 +3,8 @@ recipe: Kimchi
 description: 
 image: 
 
-category: 
-tags: 
+category: Side Dish
+tags: ferment
 
 yield: 8 pounds of kimchi
 default_scale: 
