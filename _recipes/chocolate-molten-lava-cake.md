@@ -6,14 +6,14 @@ image:
 category: Dessert
 tags: baking
 
-yield: Two 3-inch cakes
+yield: 4 lava cakes
 default_scale: 
 scale_notes: 
 
 prep_active: 
 prep_inactive: 
 
-cook_time: 
+cook_time: 11-15 minutes
 cook_temp: 350 degrees F
 cook_method: Bake
 
@@ -26,13 +26,13 @@ source_url: https://www.realbakingwithrose.com/month/2021/4/3/molten-lava-chocol
 
 
 ## Ingredients
-- 4 tablespoons butter
-- 1 teaspoon butter for coating ramekins
-- 1 large egg + 1 yolk (36-38 g yolk, 30 g whites)
-- 3 ounces dark chocolate, 61%-62% cacaro
-- 2 tablespoons granulated sugar
-- 1 tablespoon all-purpose flour
-- 1/16 teaspoon fine sea salt
+- 8 tablespoons butter
+- 2 teaspoon butter for coating ramekins
+- 2 large egg + 2 yolk (36-38 g yolk, 30 g whites)
+- 6 ounces dark chocolate, 61%-62% cacao
+- 4 tablespoons granulated sugar
+- 2 tablespoon all-purpose flour
+- 1/8 teaspoon fine sea salt
 
 
 
