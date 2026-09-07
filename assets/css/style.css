@@ -1124,9 +1124,9 @@ a:hover {
 }
 
 .baking-mode-status {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--muted);
-  margin-left: 0.25rem;
+  margin-left: 0.15rem;
 }
 
 .baking-mode-toggle {
