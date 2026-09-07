@@ -3,7 +3,7 @@ recipe: Chocolate Molten Lava Cake
 description: 
 image: 
 
-category: dessert
+category: Dessert
 tags: baking
 
 yield: Two 3-inch cakes
