@@ -1136,7 +1136,7 @@ a:hover {
   border: 0;
   padding: 0;
   margin: 0;
-  width: 46px;
+  width: 40px;
   height: 26px;
   background: transparent;
   cursor: pointer;
@@ -1145,7 +1145,7 @@ a:hover {
 .baking-mode-toggle-track {
   position: relative;
   display: block;
-  width: 46px;
+  width: 40px;
   height: 26px;
   border-radius: 999px;
   background: #b8bdc2;
