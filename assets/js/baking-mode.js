@@ -55,7 +55,7 @@
                         await navigator.wakeLock.request("screen");
 
                     setActiveState(true);
-                    setStatus("Screen will stay on.");
+                    setStatus("(Screen will stay on)");
 
                     wakeLock.addEventListener(
                         "release",
