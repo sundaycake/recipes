@@ -383,8 +383,6 @@ a:hover {
 
         overflow-x: auto;
         flex-wrap: nowrap;
-
-        border-bottom: 1px solid var(--border);
     }
 
     .recipe-jump-nav a {
