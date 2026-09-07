@@ -34,7 +34,7 @@ source_url: https://www.realbakingwithrose.com/month/2021/4/3/molten-lava-chocol
 - 2 tablespoon all-purpose flour
 - 1/8 teaspoon fine sea salt
 
-
+- If using cocoa powder, use 23 g cocoa powder, 37 g granulated sugar, and an additional 5 tablespoons of butter
 
 ## Instructions
 1. Preheat oven to 350 degrees F
