@@ -1113,9 +1113,15 @@ a:hover {
 
 .recipe-baking-mode {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  margin: 1rem 0;
+  gap: 1rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.baking-mode-label {
+  font-weight: 600;
+  color: var(--text);
 }
 
 .baking-mode-toggle {
