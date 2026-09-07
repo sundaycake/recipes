@@ -1158,6 +1158,101 @@ a:hover {
 }
 
 
+/* Baking Mode toggle */
+
+.recipe-baking-mode {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.baking-mode-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 52px;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.baking-mode-toggle-track {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 32px;
+  border-radius: 999px;
+  background: #b8bdc2;
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.baking-mode-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.22),
+    0 1px 2px rgba(0, 0, 0, 0.12);
+  transition: transform 180ms ease;
+}
+
+/* On */
+
+.baking-mode-toggle[aria-pressed="true"] .baking-mode-toggle-track {
+  background: #34a853;
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.baking-mode-toggle[aria-pressed="true"] .baking-mode-toggle-knob {
+  transform: translateX(20px);
+}
+
+/* Hover */
+
+.baking-mode-toggle:hover .baking-mode-toggle-track {
+  background: #a7adb2;
+}
+
+.baking-mode-toggle:hover[aria-pressed="true"] .baking-mode-toggle-track {
+  background: #2e964a;
+}
+
+/* Keyboard focus */
+
+.baking-mode-toggle:focus-visible {
+  outline: none;
+}
+
+.baking-mode-toggle:focus-visible .baking-mode-toggle-track {
+  outline: 3px solid rgba(52, 168, 83, 0.35);
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .baking-mode-toggle-track,
+  .baking-mode-toggle-knob {
+    transition: none;
+  }
+}
+
+
+
 /* --------------------------------------------------
    Recipe scaling
    -------------------------------------------------- */
