@@ -1108,57 +1108,8 @@ a:hover {
 
 
 /* --------------------------------------------------
-   Baking mode
+   Baking Mode Toggle Switch
    -------------------------------------------------- */
-
-.recipe-baking-mode {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-
-    margin-bottom: 1.5rem;
-}
-
-.recipe-baking-mode button {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 0.4rem 0.9rem;
-
-    border: 1px solid var(--border);
-    border-radius: 4px;
-
-    background: var(--card-background);
-    color: var(--text);
-
-    font: inherit;
-    cursor: pointer;
-}
-
-.recipe-baking-mode button.active {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.recipe-baking-mode button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
-
-.recipe-baking-mode button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.baking-mode-status {
-    font-size: 0.85rem;
-    color: var(--muted);
-}
-
-
-/* Baking Mode toggle */
 
 .recipe-baking-mode {
   display: flex;
@@ -1208,7 +1159,7 @@ a:hover {
   transition: transform 180ms ease;
 }
 
-/* On */
+/* On State */
 
 .baking-mode-toggle[aria-pressed="true"] .baking-mode-toggle-track {
   background: #34a853;
@@ -1221,7 +1172,7 @@ a:hover {
   transform: translateX(20px);
 }
 
-/* Hover */
+/* Hover States */
 
 .baking-mode-toggle:hover .baking-mode-toggle-track {
   background: #a7adb2;
@@ -1231,7 +1182,7 @@ a:hover {
   background: #2e964a;
 }
 
-/* Keyboard focus */
+/* Keyboard Focus */
 
 .baking-mode-toggle:focus-visible {
   outline: none;
@@ -1242,7 +1193,7 @@ a:hover {
   outline-offset: 3px;
 }
 
-/* Respect reduced-motion preferences */
+/* Accessibility: Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
   .baking-mode-toggle-track,
