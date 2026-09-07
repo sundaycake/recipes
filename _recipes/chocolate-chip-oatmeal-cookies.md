@@ -7,12 +7,13 @@ category: Dessert
 tags: 
   - cookie
   - baking
+  - air fryer
 
 yield: 20-50 cookies
 default_scale: 1
 scale_notes: 
 
-prep_active: 20
+prep_active: 20 minutes
 prep_inactive: 
 
 cook_time: 12-17 minutes
