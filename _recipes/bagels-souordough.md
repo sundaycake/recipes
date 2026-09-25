@@ -3,7 +3,7 @@ recipe: Bagels (sourdough)
 description: Sourdough bagels
 image: 
 
-category: Breads
+category: Bread
 tags: sourdough
 
 yield: 8 large or 10 medium bagels
