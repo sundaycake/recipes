@@ -4,7 +4,8 @@ description: Sourdough bagels
 image: 
 
 category: Bread
-tags: sourdough
+tags: 
+  - sourdough
 
 yield: 8 large or 10 medium bagels
 default_scale: 1
