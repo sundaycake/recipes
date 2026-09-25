@@ -10,10 +10,10 @@ yield: 8 large or 10 medium bagels
 default_scale: 1
 scale_notes: 
 
-prep_active: 
-prep_inactive: 
+prep_active: 15 minutes
+prep_inactive: ~40 minutes rest, 2-5 hours proof, 12-24 hours fridged
 
-cook_time: 400
+cook_time: 18-22 minutes
 cook_temp: 400°F
 cook_method: Bake
 
@@ -22,8 +22,7 @@ source_url:
 ---
 
 ## Equipment
-- Proofing tray
-- 
+- Covered proofing tray
 
 ## Ingredients
 
