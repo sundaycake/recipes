@@ -3,7 +3,7 @@ recipe: Aebleskiver
 description: 
 image: 
 
-category: breakfast
+category: Breakfast
 tags: 
 
 yield: 30 aebleskivers
