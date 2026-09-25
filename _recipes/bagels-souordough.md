@@ -69,6 +69,8 @@ This is a low hydration dough and it will be stiff. The mixer might have to work
 
 ## Tips
 
+This recipe at 1x scale can make 8 large or 10 medium bagels
+
 ## Substitutions
 
 ## Adaptation
