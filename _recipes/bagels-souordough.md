@@ -7,7 +7,7 @@ category: Bread
 tags: 
   - sourdough
 
-yield: 8 large or 10 medium bagels
+yield: 8 large bagels
 default_scale: 1
 scale_notes: 
 
